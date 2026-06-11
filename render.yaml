@@ -9,7 +9,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: MONGO_URI
-        sync: false
+        value: mongodb+srv://solvencetech:Solvence%40123456@cluster0.vdzarsz.mongodb.net/?appName=Cluster0
       - key: JWT_SECRET
-        sync: false
+        value: solvence_super_secret_key_2026_production
     plan: free
