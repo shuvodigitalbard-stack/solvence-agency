@@ -1,86 +1,93 @@
 # 🚀 Deployment Guide — Solvence Tech Agency
 
-## What You Need To Do (Step by Step)
+## Option 1: Render (Recommended — Free)
 
-### Step 1: Create MongoDB Atlas Database (Free)
+### Step 1: Deploy Backend + Frontend Together
 
-1. Go to [mongodb.com/atlas](https://mongodb.com/atlas) and sign up (free)
-2. Create a new cluster → Choose **M0 FREE** tier
-3. **IP Access List** → Add `0.0.0.0/0` (allows all IPs) — this is needed so your backend server can connect from anywhere
-4. Create a database user (username + password) — save these!
-5. Click **Connect** → **Connect your application** → Copy the connection string
-6. It looks like: `mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/solvence_agency?retryWrites=true&w=majority`
-
-### Step 2: Deploy Backend to Render (Free)
-
-1. Go to [render.com](https://render.com) and sign up with GitHub
-2. Click **New** → **Web Service**
-3. Connect your `solvence-agency` repo
-4. Settings:
-   - **Name:** `solvence-api`
+1. Go to **[render.com](https://dashboard.render.com)** and sign up/login
+2. Click **"New +"** → **"Web Service"**
+3. Connect your GitHub: **shuvodigitalbard-stack/solvence-agency**
+4. Configure:
+   - **Name:** `solvence-agency`
    - **Root Directory:** `backend`
+   - **Runtime:** Node
    - **Build Command:** `npm install`
-   - **Start Command:** `node server.js`
-5. Add Environment Variables:
-   ```
-   MONGO_URI=mongodb+srv://YOUR_USERNAME:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/solvence_agency?retryWrites=true&w=majority
-   JWT_SECRET=your_super_secret_key_here_2026
-   NODE_ENV=production
-   ```
-6. Click **Create Web Service**
-7. Wait for deployment (2-3 minutes)
-8. Copy the URL: `https://solvence-api.onrender.com`
+   - **Start Command:** `NODE_ENV=production node server.js`
+   - **Plan:** Free
 
-### Step 3: Deploy Frontend to Vercel (Free)
+5. Add **Environment Variables**:
+   ```
+   NODE_ENV = production
+   MONGO_URI = mongodb+srv://solvencetech:***@cluster0.vdzarsz.mongodb.net/?appName=Cluster0
+   JWT_SECRET = solvence_super_secret_key_2026_production
+   ```
 
-1. Go to [vercel.com](https://vercel.com) and sign up with GitHub
-2. Click **Add New** → **Project**
-3. Import `solvence-agency` repo
-4. Settings:
+6. Click **"Create Web Service"**
+
+✅ **Your site will be live at:** `https://solvence-agency.onrender.com`
+
+### Step 2: Access Admin Panel
+
+- URL: `https://solvence-agency.onrender.com/admin/login`
+- Email: `admin@solvence.com`
+- Password: `admin123`
+
+---
+
+## Option 2: Vercel (Frontend) + Render (Backend)
+
+### Backend (Render):
+Same as Option 1 above.
+
+### Frontend (Vercel):
+1. Go to **[vercel.com](https://vercel.com)** and sign up/login
+2. Click **"Add New"** → **"Project"**
+3. Import: **shuvodigitalbard-stack/solvence-agency**
+4. Configure:
    - **Framework Preset:** Vite
    - **Root Directory:** `frontend`
    - **Build Command:** `npm run build`
    - **Output Directory:** `dist`
 5. Add Environment Variable:
    ```
-   VITE_API_URL=https://solvence-api.onrender.com/api
+   VITE_API_URL = https://solvence-agency.onrender.com/api
    ```
-6. Click **Deploy**
-7. Your site will be live at: `https://solvence-agency.vercel.app`
+6. Click **"Deploy"**
 
-### Step 4: Seed the Database
+✅ **Your site will be live at:** `https://solvence-agency.vercel.app`
 
-After backend is deployed, run the seed:
+---
 
-```bash
-# Locally, with your MONGO_URI set:
-cd backend
-node seed.js
-```
+## Option 3: Railway (Alternative)
 
-Or use Render's Shell:
-1. Go to your Render dashboard → `solvence-api`
-2. Click **Shell**
-3. Run: `node seed.js`
+1. Go to **[railway.app](https://railway.app)** and sign up/login
+2. **"New Project"** → **"Deploy from GitHub repo"**
+3. Select: **shuvodigitalbard-stack/solvence-agency**
+4. Set root directory: `backend`
+5. Add env vars (same as Render)
+6. Deploy!
 
-### Step 5: Test Everything
+---
 
-1. Visit your Vercel URL → Homepage should load
-2. Go to `/admin/login` → Login with:
-   - Email: `admin@solvence.com`
-   - Password: `admin123`
-3. Test the contact form → Check your Telegram for the message
-4. Add/edit services, clients, team members from admin
+## 🔧 After Deployment
 
-### Step 6: Connect Custom Domain (Optional)
+1. **Seed the database** (run once):
+   ```bash
+   # SSH into your Render service and run:
+   node seed.js
+   ```
 
-1. In Vercel: Settings → Domains → Add your domain
-2. In Render: Settings → Custom Domain → Add your domain
-3. Update DNS records as instructed
+2. **Test the contact form** — submit a message and check your Telegram
 
-## 🔑 Important Notes
+3. **Login to admin** at `/admin/login`
 
-- **MongoDB IP:** Use `0.0.0.0/0` for the IP access list — this allows connections from any server (needed for Render/Vercel)
-- **Free tier limits:** Render free tier spins down after 15 min inactivity (takes ~30s to wake up). Vercel has no sleep.
-- **Admin credentials:** Change the default admin password after first login!
-- **Telegram bot:** The contact form sends messages to your Telegram. Make sure the bot token is correct in the backend.
+4. **Customize content** — add your own services, team members, clients
+
+---
+
+## 📝 Notes
+
+- The free Render tier sleeps after 15 minutes of inactivity (takes ~30s to wake up)
+- MongoDB Atlas free tier: 512MB storage
+- All data persists across deploys
+- The contact form sends messages to your Telegram bot
