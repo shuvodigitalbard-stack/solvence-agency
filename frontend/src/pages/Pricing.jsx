@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiCheck, FiX, FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
