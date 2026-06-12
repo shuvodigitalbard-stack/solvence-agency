@@ -68,14 +68,14 @@ export default function Pricing() {
         <div className="container">
           <h1 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '12px',
-            fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e'
+            fontFamily: 'Red Hat Display', fontWeight: 900, color: 'var(--text-primary)'
           }}>
             Simple, <span className="gradient-text">Transparent</span> Pricing
           </h1>
-          <p style={{ color: '#4a5568', fontSize: '1.05rem', maxWidth: '500px', margin: '0 auto 28px' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '500px', margin: '0 auto 28px' }}>
             No hidden fees. No surprises. Choose the plan that fits your needs.
           </p>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', background: '#fff', borderRadius: '50px', padding: '6px', border: '1px solid rgba(0,0,0,0.08)' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', background: 'var(--card-bg)', borderRadius: '50px', padding: '6px', border: '1px solid var(--card-border)' }}>
             <button onClick={() => setAnnual(false)} style={{
               padding: '8px 20px', borderRadius: '50px', border: 'none', cursor: 'pointer',
               background: !annual ? 'var(--gradient)' : 'transparent',
@@ -91,12 +91,12 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Cards */}
-      <section style={{ padding: '32px 0 60px', background: '#fff', position: 'relative', zIndex: 1 }}>
+      <section style={{ padding: '32px 0 60px', background: 'var(--card-bg)', position: 'relative', zIndex: 1 }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', maxWidth: '1000px', margin: '0 auto' }}>
             {plans.map((plan, i) => (
               <TiltCard key={i} intensity={12} glare={true} style={{
-                background: '#fff', borderRadius: '20px', padding: '32px 28px',
+                background: 'var(--card-bg)', borderRadius: '20px', padding: '32px 28px',
                 border: plan.popular ? '2px solid #e0c060' : '1px solid rgba(0,0,0,0.08)',
                 boxShadow: plan.popular ? '0 8px 30px rgba(224,192,96,0.15)' : '0 2px 10px rgba(0,0,0,0.04)',
                 position: 'relative',
@@ -109,14 +109,14 @@ export default function Pricing() {
                   }}>MOST POPULAR</div>
                 )}
 
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '4px', fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>{plan.name}</h3>
-                <p style={{ color: '#64748b', fontSize: '0.85rem', marginBottom: '20px' }}>{plan.description}</p>
+                <h3 style={{ fontSize: '1.3rem', marginBottom: '4px', fontFamily: 'Red Hat Display', color: 'var(--text-primary)' }}>{plan.name}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '20px' }}>{plan.description}</p>
 
                 <div style={{ marginBottom: '24px' }}>
-                  <span style={{ fontSize: '2.5rem', fontWeight: 900, fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>
+                  <span style={{ fontSize: '2.5rem', fontWeight: 900, fontFamily: 'Red Hat Display', color: 'var(--text-primary)' }}>
                     {plan.price}
                   </span>
-                  <span style={{ color: '#64748b', fontSize: '0.9rem' }}>{plan.period}</span>
+                  <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{plan.period}</span>
                 </div>
 
                 <MagneticButton intensity={0.3}>
@@ -141,7 +141,7 @@ export default function Pricing() {
                         </div>
                       ) : (
                         <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(148,163,184,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                          <FiX size={12} style={{ color: '#94a3b8' }} />
+                          <FiX size={12} style={{ color: 'var(--text-muted)' }} />
                         </div>
                       )}
                       <span style={{ color: f.included ? '#334155' : '#94a3b8', fontSize: '0.85rem' }}>{f.text}</span>
@@ -168,7 +168,7 @@ export default function Pricing() {
               Let's discuss your project and find the perfect solution.
             </p>
             <MagneticButton intensity={0.5}>
-              <Link to="/contact" className="btn" style={{ background: '#fff', color: '#c9a83c', border: 'none', padding: '12px 28px' }}>
+              <Link to="/contact" className="btn" style={{ background: 'var(--card-bg)', color: '#c9a83c', border: 'none', padding: '12px 28px' }}>
                 Free Consultation
               </Link>
             </MagneticButton>

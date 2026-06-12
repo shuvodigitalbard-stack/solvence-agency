@@ -132,10 +132,10 @@ export default function AdminTracking() {
     <div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
         <div>
-          <h1 style={{ fontSize: '1.8rem', fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e' }}>
+          <h1 style={{ fontSize: '1.8rem', fontFamily: 'Red Hat Display', fontWeight: 900, color: 'var(--text-primary)' }}>
             Tracking & Analytics
           </h1>
-          <p style={{ color: '#64748b', fontSize: '0.9rem', marginTop: '4px' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '4px' }}>
             Configure GTM, Google Analytics 4, and Microsoft Clarity tracking codes
           </p>
         </div>
@@ -162,15 +162,15 @@ export default function AdminTracking() {
       }}>
         <FiSettings style={{ color: '#c9a83c', fontSize: '1.2rem', flexShrink: 0, marginTop: '2px' }} />
         <div>
-          <p style={{ color: '#4a5568', fontSize: '0.85rem', lineHeight: 1.6 }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>
             <strong>How it works:</strong> Enter your tracking IDs below. The codes will be automatically injected into your website's header and body. 
-            You can also set environment variables (<code style={{ background: 'rgba(0,0,0,0.05)', padding: '1px 6px', borderRadius: '4px', fontSize: '0.8rem' }}>VITE_GTM_ID</code>, <code style={{ background: 'rgba(0,0,0,0.05)', padding: '1px 6px', borderRadius: '4px', fontSize: '0.8rem' }}>VITE_GA4_ID</code>, <code style={{ background: 'rgba(0,0,0,0.05)', padding: '1px 6px', borderRadius: '4px', fontSize: '0.8rem' }}>VITE_CLARITY_ID</code>) for production builds.
+            You can also set environment variables (<code style={{ background: 'var(--bg-tertiary)', padding: '1px 6px', borderRadius: '4px', fontSize: '0.8rem' }}>VITE_GTM_ID</code>, <code style={{ background: 'var(--bg-tertiary)', padding: '1px 6px', borderRadius: '4px', fontSize: '0.8rem' }}>VITE_GA4_ID</code>, <code style={{ background: 'var(--bg-tertiary)', padding: '1px 6px', borderRadius: '4px', fontSize: '0.8rem' }}>VITE_CLARITY_ID</code>) for production builds.
           </p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', borderBottom: '1px solid rgba(0,0,0,0.06)', paddingBottom: '12px' }}>
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '24px', borderBottom: '1px solid var(--card-border)', paddingBottom: '12px' }}>
         {tabs.map(tab => (
           <button
             key={tab.key}
@@ -210,8 +210,8 @@ export default function AdminTracking() {
                   {tab.icon}
                 </div>
                 <div>
-                  <h3 style={{ fontFamily: 'Red Hat Display', color: '#1a1a2e', fontSize: '1.1rem' }}>{tab.label}</h3>
-                  <p style={{ color: '#94a3b8', fontSize: '0.8rem' }}>
+                  <h3 style={{ fontFamily: 'Red Hat Display', color: 'var(--text-primary)', fontSize: '1.1rem' }}>{tab.label}</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
                     {tab.key === 'gtm' && 'Manages all tracking tags from one place'}
                     {tab.key === 'ga4' && 'Tracks website traffic and user behavior'}
                     {tab.key === 'clarity' && 'Heatmaps, session recordings & user insights'}
@@ -219,7 +219,7 @@ export default function AdminTracking() {
                 </div>
               </div>
               <label style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: '#64748b', fontSize: '0.85rem' }}>Enabled</span>
+                <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>Enabled</span>
                 <div
                   onClick={() => setEnabled(tab.key, !isEnabled(tab.key))}
                   style={{
@@ -231,7 +231,7 @@ export default function AdminTracking() {
                 >
                   <div style={{
                     width: '20px', height: '20px', borderRadius: '50%',
-                    background: '#fff', position: 'absolute', top: '2px',
+                    background: 'var(--card-bg)', position: 'absolute', top: '2px',
                     left: isEnabled(tab.key) ? '22px' : '2px',
                     transition: 'left 0.3s', boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                   }} />
@@ -240,7 +240,7 @@ export default function AdminTracking() {
             </div>
 
             <div style={{ marginBottom: '16px' }}>
-              <label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem', fontWeight: 600 }}>
+              <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem', fontWeight: 600 }}>
                 {tab.key === 'gtm' && 'Container ID'}
                 {tab.key === 'ga4' && 'Measurement ID'}
                 {tab.key === 'clarity' && 'Project ID'}
@@ -258,7 +258,7 @@ export default function AdminTracking() {
                 />
                 <FiCode style={{
                   position: 'absolute', left: '14px', top: '50%',
-                  transform: 'translateY(-50%)', color: '#94a3b8',
+                  transform: 'translateY(-50%)', color: 'var(--text-muted)',
                 }} />
                 {getIdValue(tab.key) && (
                   <div style={{
@@ -288,7 +288,7 @@ export default function AdminTracking() {
               <div style={{
                 position: 'absolute', top: '8px', right: '8px',
                 background: 'rgba(255,255,255,0.1)', padding: '2px 8px',
-                borderRadius: '4px', fontSize: '0.7rem', color: '#94a3b8',
+                borderRadius: '4px', fontSize: '0.7rem', color: 'var(--text-muted)',
               }}>
                 Code Preview
               </div>
@@ -341,7 +341,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       {/* Quick Actions */}
       <div className="card" style={{ background: 'linear-gradient(135deg, rgba(224,192,96,0.05), rgba(32,160,192,0.05))' }}>
-        <h3 style={{ fontFamily: 'Red Hat Display', color: '#1a1a2e', marginBottom: '12px', fontSize: '1rem' }}>
+        <h3 style={{ fontFamily: 'Red Hat Display', color: 'var(--text-primary)', marginBottom: '12px', fontSize: '1rem' }}>
           Quick Setup Guide
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
@@ -359,8 +359,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 fontSize: '0.8rem', fontWeight: 700, flexShrink: 0,
               }}>{item.step}</div>
               <div>
-                <div style={{ fontWeight: 600, color: '#1a1a2e', fontSize: '0.85rem' }}>{item.title}</div>
-                <div style={{ color: '#64748b', fontSize: '0.75rem' }}>{item.desc}</div>
+                <div style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.85rem' }}>{item.title}</div>
+                <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>{item.desc}</div>
               </div>
             </div>
           ))}

@@ -11,15 +11,15 @@ export default function WhatsAppButton() {
       {hovered && (
         <div style={{
           position: 'absolute', bottom: '70px', right: 0, whiteSpace: 'nowrap',
-          background: '#fff', padding: '10px 16px', borderRadius: '12px',
+          background: 'var(--card-bg)', padding: '10px 16px', borderRadius: '12px',
           boxShadow: '0 4px 20px rgba(0,0,0,0.15)', fontSize: '0.85rem',
-          color: '#1a1a2e', fontWeight: 500,
+          color: 'var(--text-primary)', fontWeight: 500,
           animation: 'fadeIn 0.2s ease-out'
         }}>
           💬 Chat with us on WhatsApp
           <div style={{
             position: 'absolute', bottom: '-6px', right: '20px',
-            width: '12px', height: '12px', background: '#fff',
+            width: '12px', height: '12px', background: 'var(--card-bg)',
             transform: 'rotate(45deg)', borderRadius: '2px'
           }} />
         </div>

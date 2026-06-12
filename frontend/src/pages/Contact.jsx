@@ -61,19 +61,19 @@ export default function Contact() {
         <div className="container">
           <h1 style={{
             fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginBottom: '16px',
-            fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e'
+            fontFamily: 'Red Hat Display', fontWeight: 900, color: 'var(--text-primary)'
           }}>
             Get In <span className="gradient-text">Touch</span>
           </h1>
           <p style={{
-            color: '#4a5568', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto'
+            color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto'
           }}>
             Ready to start your project? Let's discuss how we can help.
           </p>
         </div>
       </section>
 
-      <section style={{ padding: '32px 0 48px', background: '#fff' }}>
+      <section style={{ padding: '32px 0 48px', background: 'var(--card-bg)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px' }}>
             {/* Form */}
@@ -91,7 +91,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }} noValidate>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                   <div>
-                    <label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem' }}>
+                    <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
                       Name <span style={{ color: '#ef4444' }}>*</span>
                     </label>
                     <input
@@ -106,7 +106,7 @@ export default function Contact() {
                     )}
                   </div>
                   <div>
-                    <label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem' }}>
+                    <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
                       Email <span style={{ color: '#ef4444' }}>*</span>
                     </label>
                     <input
@@ -124,11 +124,11 @@ export default function Contact() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                   <div>
-                    <label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem' }}>Phone</label>
+                    <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Phone</label>
                     <input type="text" value={form.phone} onChange={e => handleChange('phone', e.target.value)} placeholder="+880..." />
                   </div>
                   <div>
-                    <label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem' }}>Service</label>
+                    <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Service</label>
                     <select value={form.service} onChange={e => handleChange('service', e.target.value)}>
                       <option value="">Select a service</option>
                       <option value="web">Web Development</option>
@@ -142,12 +142,12 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem' }}>Subject</label>
+                  <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Subject</label>
                   <input type="text" value={form.subject} onChange={e => handleChange('subject', e.target.value)} placeholder="Project inquiry" />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem' }}>
+                  <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
                     Message <span style={{ color: '#ef4444' }}>*</span>
                   </label>
                   <textarea
@@ -191,8 +191,8 @@ export default function Contact() {
                         {React.cloneElement(item.icon, { style: { color: '#c9a83c' } })}
                       </div>
                       <div>
-                        <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{item.label}</div>
-                        <div style={{ color: '#1a1a2e' }}>{item.value}</div>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{item.label}</div>
+                        <div style={{ color: 'var(--text-primary)' }}>{item.value}</div>
                       </div>
                     </div>
                   ))}
@@ -208,8 +208,8 @@ export default function Contact() {
                     { day: 'Sunday', hours: 'Closed' },
                   ].map((h, i) => (
                     <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem' }}>
-                      <span style={{ color: '#4a5568' }}>{h.day}</span>
-                      <span style={{ color: '#1a1a2e', fontWeight: 500 }}>{h.hours}</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>{h.day}</span>
+                      <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{h.hours}</span>
                     </div>
                   ))}
                 </div>

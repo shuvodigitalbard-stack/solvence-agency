@@ -33,12 +33,12 @@ export default function Services() {
         <div className="container">
           <h1 style={{
             fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginBottom: '16px',
-            fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e'
+            fontFamily: 'Red Hat Display', fontWeight: 900, color: 'var(--text-primary)'
           }}>
             Our <span className="gradient-text">Services</span>
           </h1>
           <p style={{
-            color: '#4a5568', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 28px'
+            color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 28px'
           }}>
             Comprehensive technology solutions to help your business grow
           </p>
@@ -69,16 +69,16 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section style={{ padding: '32px 0 48px', background: '#fff' }}>
+      <section style={{ padding: '32px 0 48px', background: 'var(--card-bg)' }}>
         <div className="container">
           {loading ? (
             <div style={{ display: 'flex', justifyContent: 'center', padding: '80px 0' }}>
               <div className="spinner" />
             </div>
           ) : services.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px 0', color: '#64748b' }}>
+            <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--text-muted)' }}>
               <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔍</div>
-              <h3 style={{ marginBottom: '8px', color: '#1a1a2e' }}>No services found</h3>
+              <h3 style={{ marginBottom: '8px', color: 'var(--text-primary)' }}>No services found</h3>
               <p>Try selecting a different category</p>
             </div>
           ) : (
@@ -91,7 +91,7 @@ export default function Services() {
                   <div style={{ fontSize: '2.5rem', marginBottom: '16px' }}>{s.icon}</div>
                   <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontFamily: 'Red Hat Display' }}>{s.title}</h3>
                   <p style={{
-                    color: '#4a5568', fontSize: '0.9rem', marginBottom: '16px',
+                    color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '16px',
                     lineHeight: 1.7, flex: 1
                   }}>{s.shortDescription}</p>
 
@@ -101,7 +101,7 @@ export default function Services() {
                         <span key={j} className="tag" style={{ fontSize: '0.75rem', padding: '4px 10px' }}>{f}</span>
                       ))}
                       {s.features.length > 3 && (
-                        <span style={{ fontSize: '0.75rem', color: '#94a3b8', padding: '4px 0' }}>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', padding: '4px 0' }}>
                           +{s.features.length - 3} more
                         </span>
                       )}

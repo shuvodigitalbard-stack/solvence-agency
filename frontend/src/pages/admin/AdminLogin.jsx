@@ -26,22 +26,22 @@ export default function AdminLogin() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8f9fa' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-primary)' }}>
       <div className="card" style={{ width: '100%', maxWidth: '420px', padding: '40px' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <img src={logoUrl} alt="Solvence Tech" style={{ height: '56px', width: 'auto', margin: '0 auto 16px' }} />
-          <h2 style={{ fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e' }}>Admin Login</h2>
-          <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Sign in to manage your agency</p>
+          <h2 style={{ fontFamily: 'Red Hat Display', fontWeight: 900, color: 'var(--text-primary)' }}>Admin Login</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Sign in to manage your agency</p>
         </div>
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem' }}>Email</label>
+            <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Email</label>
             <div style={{ position: 'relative' }}>
-              <FiMail style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
+              <FiMail style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="admin@solvence.com" required style={{ paddingLeft: '40px' }} />
             </div>
           </div>
-          <div><label style={{ display: 'block', marginBottom: '6px', color: '#4a5568', fontSize: '0.85rem' }}>Password</label><input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required /></div>
+          <div><label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Password</label><input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" required /></div>
           <button type="submit" className="btn btn-primary" disabled={loading} style={{ justifyContent: 'center', padding: '14px', marginTop: '8px' }}>
             {loading ? 'Signing in...' : 'Sign In'}
           </button>

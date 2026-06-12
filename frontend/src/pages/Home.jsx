@@ -65,12 +65,12 @@ export default function Home() {
               <h1 className="animate-fade-in-up delay-1" style={{
                 fontSize: 'clamp(2.2rem, 7vw, 4.2rem)', fontWeight: 900,
                 lineHeight: 1.1, marginBottom: '16px', fontFamily: 'Red Hat Display',
-                color: '#1a1a2e', letterSpacing: '-0.5px'
+                color: 'var(--text-primary)', letterSpacing: '-0.5px'
               }}>
                 We Build <span className="gradient-text">Digital Solutions</span><br />That Drive Growth
               </h1>
               <p className="animate-fade-in-up delay-2" style={{
-                fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', color: '#4a5568',
+                fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', color: 'var(--text-secondary)',
                 maxWidth: '560px', margin: '0 auto 28px', lineHeight: 1.7
               }}>
                 From custom web applications to data-driven marketing campaigns, we deliver technology solutions that help your business scale.
@@ -93,10 +93,10 @@ export default function Home() {
                   { icon: <FiAward />, value: '100+', label: 'Projects Done' },
                   { icon: <FiTrendingUp />, value: '98%', label: 'Retention' },
                 ].map((s, i) => (
-                  <div key={i} className="hover-lift" style={{ textAlign: 'center', padding: '14px 8px', background: '#fff', borderRadius: '14px', border: '1px solid rgba(0,0,0,0.06)' }}>
+                  <div key={i} className="hover-lift" style={{ textAlign: 'center', padding: '14px 8px', background: 'var(--card-bg)', borderRadius: '14px', border: '1px solid var(--card-border)' }}>
                     <div style={{ color: '#c9a83c', marginBottom: '4px', display: 'flex', justifyContent: 'center', fontSize: '1.1rem' }}>{s.icon}</div>
-                    <div style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.6rem)', fontWeight: 800, fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>{s.value}</div>
-                    <div style={{ color: '#64748b', fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>{s.label}</div>
+                    <div style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.6rem)', fontWeight: 800, fontFamily: 'Red Hat Display', color: 'var(--text-primary)' }}>{s.value}</div>
+                    <div style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -106,13 +106,13 @@ export default function Home() {
       </ParallaxSection>
 
       {/* Services Preview */}
-      <section style={{ background: '#fff', padding: '48px 0 60px' }}>
+      <section style={{ background: 'var(--card-bg)', padding: '48px 0 60px' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-            <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', marginBottom: '10px', fontFamily: 'Red Hat Display', color: '#1a1a2e', fontWeight: 800 }}>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', marginBottom: '10px', fontFamily: 'Red Hat Display', color: 'var(--text-primary)', fontWeight: 800 }}>
               What We <span className="gradient-text">Do Best</span>
             </h2>
-            <p style={{ color: '#4a5568', fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', maxWidth: '500px', margin: '0 auto' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', maxWidth: '500px', margin: '0 auto' }}>
               Comprehensive technology solutions tailored to your business needs
             </p>
           </div>
@@ -127,7 +127,7 @@ export default function Home() {
                   <div className="card tilt-card hover-lift" style={{ padding: '24px', height: '100%' }}>
                     <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{s.icon}</div>
                     <h3 style={{ fontSize: '1.1rem', marginBottom: '8px', fontFamily: 'Red Hat Display' }}>{s.title}</h3>
-                    <p style={{ color: '#4a5568', fontSize: '0.85rem', marginBottom: '12px', lineHeight: 1.6 }}>{s.shortDescription}</p>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '12px', lineHeight: 1.6 }}>{s.shortDescription}</p>
                     <span style={{ color: '#c9a83c', fontSize: '0.8rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                       Learn more <FiArrowRight size={12} />
                     </span>
@@ -147,10 +147,10 @@ export default function Home() {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '36px', alignItems: 'center' }}>
             <div>
-              <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', marginBottom: '16px', fontFamily: 'Red Hat Display', color: '#1a1a2e', fontWeight: 800 }}>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', marginBottom: '16px', fontFamily: 'Red Hat Display', color: 'var(--text-primary)', fontWeight: 800 }}>
                 Why Choose <span className="gradient-text">Solvence?</span>
               </h2>
-              <p style={{ color: '#4a5568', fontSize: 'clamp(0.9rem, 2vw, 1rem)', lineHeight: 1.7, marginBottom: '24px' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2vw, 1rem)', lineHeight: 1.7, marginBottom: '24px' }}>
                 We combine technical expertise with business acumen to deliver solutions that don't just work — they drive real results.
               </p>
               {features.map((item, i) => (
@@ -158,20 +158,20 @@ export default function Home() {
                   <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(224,192,96,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <FiCheck size={12} style={{ color: '#c9a83c' }} />
                   </div>
-                  <span style={{ color: '#334155', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)' }}>{item}</span>
+                  <span style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)' }}>{item}</span>
                 </div>
               ))}
             </div>
-            <div style={{ background: '#fff', borderRadius: '20px', padding: 'clamp(24px, 4vw, 36px)', border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.04)' }}>
+            <div style={{ background: 'var(--card-bg)', borderRadius: '20px', padding: 'clamp(24px, 4vw, 36px)', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.04)' }}>
               <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                 <div style={{ fontSize: 'clamp(2.2rem, 5vw, 2.8rem)', fontWeight: 900, fontFamily: 'Red Hat Display', background: 'var(--gradient-text)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>3+</div>
-                <div style={{ color: '#64748b', fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>Years of Experience</div>
+                <div style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>Years of Experience</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
                 {highlights.map((s, i) => (
                   <div key={i} style={{ background: 'rgba(224,192,96,0.08)', borderRadius: '12px', padding: 'clamp(10px, 3vw, 16px)', textAlign: 'center' }}>
-                    <div style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: 800, color: '#1a1a2e' }}>{s.value}</div>
-                    <div style={{ color: '#64748b', fontSize: 'clamp(0.65rem, 1.6vw, 0.75rem)' }}>{s.label}</div>
+                    <div style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: 800, color: 'var(--text-primary)' }}>{s.value}</div>
+                    <div style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.65rem, 1.6vw, 0.75rem)' }}>{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -181,7 +181,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '48px 0', background: '#fff' }}>
+      <section style={{ padding: '48px 0', background: 'var(--card-bg)' }}>
         <div className="container">
           <div style={{
             background: 'var(--gradient)', borderRadius: '20px',
@@ -195,7 +195,7 @@ export default function Home() {
             <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', opacity: 0.9, maxWidth: '460px', margin: '0 auto 24px', position: 'relative', zIndex: 1, color: '#fff', lineHeight: 1.6 }}>
               Let's discuss how we can help transform your business with technology.
             </p>
-            <Link to="/contact" className="btn" style={{ background: '#fff', color: '#c9a83c', border: 'none', fontSize: '0.9rem', padding: '13px 28px', position: 'relative', zIndex: 1 }}>
+            <Link to="/contact" className="btn" style={{ background: 'var(--card-bg)', color: '#c9a83c', border: 'none', fontSize: '0.9rem', padding: '13px 28px', position: 'relative', zIndex: 1 }}>
               Get Free Consultation <FiArrowRight />
             </Link>
           </div>

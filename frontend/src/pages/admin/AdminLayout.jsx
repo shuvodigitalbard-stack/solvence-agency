@@ -49,7 +49,7 @@ export default function AdminLayout() {
           {navItems.map(item => (
             <Link key={item.to} to={item.to} onClick={() => setSidebarOpen(false)} style={{
               display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 20px',
-              color: isActive(item.to) ? '#e0c060' : '#64748b',
+              color: isActive(item.to) ? 'var(--primary)' : 'var(--text-muted)',
               background: isActive(item.to) ? 'rgba(224,192,96,0.1)' : 'transparent',
               borderRight: isActive(item.to) ? '3px solid #e0c060' : '3px solid transparent',
               fontSize: '0.9rem', fontWeight: 500, transition: 'var(--transition)'
@@ -98,10 +98,10 @@ export default function AdminLayout() {
             }}>{user?.name?.charAt(0)}</div>
             <div style={{ flex: 1, overflow: 'hidden', minWidth: 0 }}>
               <div style={{
-                fontSize: '0.85rem', fontWeight: 600, color: '#fff',
+                fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-light)',
                 overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'
               }}>{user?.name}</div>
-              <div style={{ fontSize: '0.7rem', color: '#64748b' }}>{user?.role}</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{user?.role}</div>
             </div>
             <button onClick={handleLogout} style={{
               background: 'none', color: '#64748b', cursor: 'pointer',

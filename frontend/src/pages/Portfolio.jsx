@@ -74,11 +74,11 @@ export default function Portfolio() {
         <div className="container">
           <h1 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '12px',
-            fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e'
+            fontFamily: 'Red Hat Display', fontWeight: 900, color: 'var(--text-primary)'
           }}>
             Our <span className="gradient-text">Portfolio</span>
           </h1>
-          <p style={{ color: '#4a5568', fontSize: '1.05rem', maxWidth: '500px', margin: '0 auto 28px' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '500px', margin: '0 auto 28px' }}>
             Explore our recent projects and see how we've helped businesses grow.
           </p>
           <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -96,13 +96,13 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Grid */}
-      <section style={{ padding: '32px 0 60px', background: '#fff', position: 'relative', zIndex: 1 }}>
+      <section style={{ padding: '32px 0 60px', background: 'var(--card-bg)', position: 'relative', zIndex: 1 }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
             {filtered.map((project, i) => (
               <TiltCard key={i} intensity={10} glare={true} style={{
-                background: '#fff', borderRadius: '16px', overflow: 'hidden',
-                border: '1px solid rgba(0,0,0,0.06)',
+                background: 'var(--card-bg)', borderRadius: '16px', overflow: 'hidden',
+                border: '1px solid var(--card-border)',
               }}>
                 {/* Project image area */}
                 <div style={{
@@ -122,17 +122,17 @@ export default function Portfolio() {
                       {categories.find(c => c.key === project.category)?.label}
                     </span>
                   </div>
-                  <h3 style={{ fontSize: '1.15rem', marginBottom: '8px', fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>
+                  <h3 style={{ fontSize: '1.15rem', marginBottom: '8px', fontFamily: 'Red Hat Display', color: 'var(--text-primary)' }}>
                     {project.title}
                   </h3>
-                  <p style={{ color: '#64748b', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '16px' }}>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '16px' }}>
                     {project.description}
                   </p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                     {project.tags.map((tag, j) => (
                       <span key={j} style={{
                         padding: '3px 10px', borderRadius: '50px', fontSize: '0.7rem',
-                        background: 'rgba(0,0,0,0.04)', color: '#64748b', fontWeight: 500
+                        background: 'var(--bg-tertiary)', color: 'var(--text-muted)', fontWeight: 500
                       }}>{tag}</span>
                     ))}
                   </div>
@@ -142,7 +142,7 @@ export default function Portfolio() {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <p style={{ color: '#64748b', marginBottom: '16px', fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--text-muted)', marginBottom: '16px', fontSize: '0.95rem' }}>
               Have a project in mind? Let's build something amazing together.
             </p>
             <Link to="/contact" className="btn btn-primary" style={{ padding: '12px 28px' }}>

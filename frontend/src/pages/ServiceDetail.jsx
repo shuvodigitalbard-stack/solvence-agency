@@ -35,7 +35,7 @@ export default function ServiceDetail() {
       }}>
         <div style={{ fontSize: '3rem', marginBottom: '16px' }}>😕</div>
         <h2 style={{ marginBottom: '8px', fontFamily: 'Red Hat Display' }}>Service Not Found</h2>
-        <p style={{ color: '#64748b', marginBottom: '24px' }}>The service you're looking for doesn't exist.</p>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '24px' }}>The service you're looking for doesn't exist.</p>
         <Link to="/services" className="btn btn-secondary">View All Services</Link>
       </div>
     );
@@ -59,10 +59,10 @@ export default function ServiceDetail() {
               <div style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', marginBottom: '16px' }}>{service.icon}</div>
               <h1 style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '20px',
-                fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e'
+                fontFamily: 'Red Hat Display', fontWeight: 900, color: 'var(--text-primary)'
               }}>{service.title}</h1>
               <p style={{
-                color: '#4a5568', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '32px'
+                color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '32px'
               }}>{service.fullDescription || service.shortDescription}</p>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <Link to="/contact" className="btn btn-primary">
@@ -77,7 +77,7 @@ export default function ServiceDetail() {
             <div>
               {service.features && service.features.length > 0 && (
                 <div className="card">
-                  <h3 style={{ marginBottom: '20px', fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>
+                  <h3 style={{ marginBottom: '20px', fontFamily: 'Red Hat Display', color: 'var(--text-primary)' }}>
                     What's Included
                   </h3>
                   {service.features.map((f, i) => (
@@ -93,7 +93,7 @@ export default function ServiceDetail() {
                       }}>
                         <FiCheck size={14} style={{ color: '#c9a83c' }} />
                       </div>
-                      <span style={{ color: '#334155' }}>{f}</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>{f}</span>
                     </div>
                   ))}
                 </div>
@@ -104,19 +104,19 @@ export default function ServiceDetail() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '60px 0', background: '#fff' }}>
+      <section style={{ padding: '60px 0', background: 'var(--card-bg)' }}>
         <div className="container">
           <div style={{
             background: 'var(--bg-primary)', borderRadius: '20px', padding: 'clamp(24px, 4vw, 40px)',
-            textAlign: 'center', border: '1px solid rgba(0,0,0,0.06)'
+            textAlign: 'center', border: '1px solid var(--card-border)'
           }}>
             <h2 style={{
               fontSize: 'clamp(1.5rem, 3vw, 2rem)', marginBottom: '12px',
-              fontFamily: 'Red Hat Display', color: '#1a1a2e'
+              fontFamily: 'Red Hat Display', color: 'var(--text-primary)'
             }}>
               Interested in {service.title}?
             </h2>
-            <p style={{ color: '#4a5568', marginBottom: '24px', maxWidth: '500px', margin: '0 auto 24px' }}>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '24px', maxWidth: '500px', margin: '0 auto 24px' }}>
               Let's discuss your project and how we can help you achieve your goals.
             </p>
             <Link to="/contact" className="btn btn-primary">
