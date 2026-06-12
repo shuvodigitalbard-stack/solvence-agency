@@ -8,42 +8,42 @@ export default function About() {
 
   return (
     <>
-      <section style={{ padding: '140px 0 60px', textAlign: 'center' }}>
+      <section style={{ padding: '140px 0 60px', textAlign: 'center', background: 'var(--bg-primary)' }}>
         <div className="container">
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginBottom: '16px', fontFamily: 'Space Grotesk' }}>
+          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginBottom: '16px', fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e' }}>
             About <span className="gradient-text">Us</span>
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+          <p style={{ color: '#4a5568', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
             We're a team of passionate technologists dedicated to helping businesses succeed.
           </p>
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section" style={{ paddingTop: 0, background: '#fff' }}>
         <div className="container">
           <div className="grid grid-2" style={{ gap: '60px', alignItems: 'center', marginBottom: '80px' }}>
             <div>
-              <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Our Story</h2>
-              <p style={{ color: '#94a3b8', lineHeight: 1.8, marginBottom: '16px' }}>
+              <h2 style={{ fontSize: '2rem', marginBottom: '20px', fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>Our Story</h2>
+              <p style={{ color: '#4a5568', lineHeight: 1.8, marginBottom: '16px' }}>
                 Solvence Tech Agency was founded with a simple mission: to provide businesses with the technology solutions they need to thrive in the digital age.
               </p>
-              <p style={{ color: '#94a3b8', lineHeight: 1.8, marginBottom: '24px' }}>
+              <p style={{ color: '#4a5568', lineHeight: 1.8, marginBottom: '24px' }}>
                 From web development to digital marketing, we offer comprehensive services that cover every aspect of your digital presence.
               </p>
               {['Client-first approach', 'Transparent pricing', 'Agile methodology', 'Continuous support'].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                  <FiCheck style={{ color: '#10b981' }} />
-                  <span>{item}</span>
+                  <FiCheck style={{ color: '#c9a83c', flexShrink: 0 }} />
+                  <span style={{ color: '#334155' }}>{item}</span>
                 </div>
               ))}
             </div>
-            <div style={{ background: 'var(--dark-light)', borderRadius: '20px', padding: '40px', textAlign: 'center' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 800, fontFamily: 'Space Grotesk', background: 'var(--gradient-text)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>3+</div>
-              <div style={{ color: '#94a3b8', marginBottom: '24px' }}>Years of Experience</div>
+            <div style={{ background: 'var(--bg-primary)', borderRadius: '20px', padding: '40px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.06)' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 900, fontFamily: 'Red Hat Display', background: 'var(--gradient-text)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>3+</div>
+              <div style={{ color: '#64748b', marginBottom: '24px' }}>Years of Experience</div>
               <div className="grid grid-2" style={{ gap: '16px' }}>
                 {[{ v: '50+', l: 'Clients' }, { v: '100+', l: 'Projects' }, { v: '15+', l: 'Team Members' }, { v: '99%', l: 'Satisfaction' }].map((s, i) => (
-                  <div key={i} style={{ background: 'rgba(99,102,241,0.1)', borderRadius: '12px', padding: '16px' }}>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 800 }}>{s.v}</div>
+                  <div key={i} style={{ background: 'rgba(224,192,96,0.08)', borderRadius: '12px', padding: '16px' }}>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#1a1a2e' }}>{s.v}</div>
                     <div style={{ color: '#64748b', fontSize: '0.8rem' }}>{s.l}</div>
                   </div>
                 ))}
@@ -62,12 +62,12 @@ export default function About() {
                     <div style={{
                       width: '80px', height: '80px', borderRadius: '50%', margin: '0 auto 16px',
                       background: 'var(--gradient)', display: 'flex', alignItems: 'center',
-                      justifyContent: 'center', fontSize: '1.5rem', fontWeight: 700
+                      justifyContent: 'center', fontSize: '1.5rem', fontWeight: 700, color: '#fff'
                     }}>
                       {m.name.split(' ').map(n => n[0]).join('')}
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', marginBottom: '4px' }}>{m.name}</h3>
-                    <p style={{ color: '#818cf8', fontSize: '0.85rem', marginBottom: '12px' }}>{m.role}</p>
+                    <h3 style={{ fontSize: '1.1rem', marginBottom: '4px', fontFamily: 'Red Hat Display' }}>{m.name}</h3>
+                    <p style={{ color: '#c9a83c', fontSize: '0.85rem', marginBottom: '12px', fontWeight: 600 }}>{m.role}</p>
                     <p style={{ color: '#64748b', fontSize: '0.85rem' }}>{m.bio}</p>
                   </div>
                 ))}

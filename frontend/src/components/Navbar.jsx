@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
+import logoUrl from '../assets/logo.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,22 +27,25 @@ export default function Navbar() {
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
       padding: scrolled ? '12px 0' : '20px 0',
-      background: scrolled ? 'rgba(15,23,42,0.95)' : 'transparent',
+      background: scrolled ? 'rgba(248, 249, 250, 0.95)' : 'transparent',
       backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(0,0,0,0.06)' : 'none',
       transition: 'all 0.3s ease'
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 800, fontFamily: 'Space Grotesk' }}>
-          <span className="gradient-text">Solvence</span>
-          <span style={{ color: '#94a3b8', fontWeight: 400 }}> Tech</span>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <img src={logoUrl} alt="Solvence Tech" style={{ height: '40px', width: 'auto' }} />
+          <span style={{ fontSize: '1.4rem', fontWeight: 800, fontFamily: 'Red Hat Display' }}>
+            <span className="gradient-text">Solvence</span>
+            <span style={{ color: '#64748b', fontWeight: 400 }}> Tech</span>
+          </span>
         </Link>
 
         {/* Desktop */}
         <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }} className="desktop-nav">
           {links.map(l => (
             <Link key={l.to} to={l.to} style={{
-              color: location.pathname === l.to ? '#818cf8' : '#94a3b8',
+              color: location.pathname === l.to ? '#c9a83c' : '#4a5568',
               fontWeight: 500, fontSize: '0.95rem'
             }}>{l.label}</Link>
           ))}
@@ -51,7 +55,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'none', color: '#fff', fontSize: '1.5rem', display: 'none' }} className="mobile-toggle">
+        <button onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'none', color: '#1a1a2e', fontSize: '1.5rem', display: 'none' }} className="mobile-toggle">
           {mobileOpen ? <FiX /> : <FiMenu />}
         </button>
       </div>
@@ -60,7 +64,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(15,23,42,0.98)', backdropFilter: 'blur(20px)',
+          background: 'rgba(248, 249, 250, 0.98)', backdropFilter: 'blur(20px)',
           display: 'flex', flexDirection: 'column', alignItems: 'center',
           justifyContent: 'center', gap: '32px', zIndex: 999
         }}>

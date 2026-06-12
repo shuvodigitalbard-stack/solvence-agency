@@ -4,11 +4,11 @@ import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiPhone, FiMapPin } from 'reac
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#0a0f1a', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '60px 0 30px' }}>
+    <footer style={{ background: '#1a1a2e', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '60px 0 30px' }}>
       <div className="container">
         <div className="grid grid-4" style={{ marginBottom: '40px' }}>
           <div>
-            <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 800, fontFamily: 'Space Grotesk', display: 'block', marginBottom: '16px' }}>
+            <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 800, fontFamily: 'Red Hat Display', display: 'block', marginBottom: '16px' }}>
               <span className="gradient-text">Solvence</span>
               <span style={{ color: '#94a3b8', fontWeight: 400 }}> Tech</span>
             </Link>
@@ -17,7 +17,7 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h4 style={{ marginBottom: '16px', fontSize: '1rem' }}>Services</h4>
+            <h4 style={{ marginBottom: '16px', fontSize: '1rem', color: '#fff', fontFamily: 'Red Hat Display' }}>Services</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <Link to="/services" style={{ color: '#64748b', fontSize: '0.9rem' }}>Web Development</Link>
               <Link to="/services" style={{ color: '#64748b', fontSize: '0.9rem' }}>Mobile Apps</Link>
@@ -26,7 +26,7 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <h4 style={{ marginBottom: '16px', fontSize: '1rem' }}>Company</h4>
+            <h4 style={{ marginBottom: '16px', fontSize: '1rem', color: '#fff', fontFamily: 'Red Hat Display' }}>Company</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <Link to="/about" style={{ color: '#64748b', fontSize: '0.9rem' }}>About Us</Link>
               <Link to="/services" style={{ color: '#64748b', fontSize: '0.9rem' }}>Services</Link>
@@ -35,7 +35,7 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <h4 style={{ marginBottom: '16px', fontSize: '1rem' }}>Contact</h4>
+            <h4 style={{ marginBottom: '16px', fontSize: '1rem', color: '#fff', fontFamily: 'Red Hat Display' }}>Contact</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#64748b', fontSize: '0.9rem' }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><FiMail /> info@solvence.com</span>
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><FiPhone /> +880 1303-118600</span>

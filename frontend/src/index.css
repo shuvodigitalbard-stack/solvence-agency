@@ -1,24 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-light: #818cf8;
-  --secondary: #0ea5e9;
-  --accent: #10b981;
-  --dark: #0f172a;
-  --dark-light: #1e293b;
-  --gray: #64748b;
-  --gray-light: #94a3b8;
-  --light: #f1f5f9;
-  --white: #ffffff;
-  --gradient: linear-gradient(135deg, #6366f1 0%, #0ea5e9 100%);
-  --gradient-text: linear-gradient(135deg, #6366f1, #0ea5e9);
-  --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+  /* Primary Colors - from Solvence logo */
+  --primary: #e0c060;
+  --primary-dark: #c9a83c;
+  --primary-light: #f0d88a;
+  --primary-bg: rgba(224, 192, 96, 0.08);
+  --primary-border: rgba(224, 192, 96, 0.25);
+
+  /* Secondary Colors - Teal from logo */
+  --secondary: #20a0c0;
+  --secondary-dark: #1880a0;
+  --secondary-light: #40b8d8;
+  --secondary-bg: rgba(32, 160, 192, 0.08);
+
+  /* Accent - Green from logo */
+  --accent: #40a040;
+  --accent-dark: #308030;
+
+  /* Background Colors - Light & Clean */
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f3f5;
+  --bg-dark: #1a1a2e;
+
+  /* Text Colors */
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-muted: #94a3b8;
+  --text-light: #ffffff;
+
+  /* Card & Surface */
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+
+  /* Gradients - Gold to Teal (from logo) */
+  --gradient: linear-gradient(135deg, #e0c060 0%, #20a0c0 100%);
+  --gradient-text: linear-gradient(135deg, #e0c060, #20a0c0);
+  --gradient-gold: linear-gradient(135deg, #e0c060 0%, #f0d88a 100%);
+  --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+
+  /* Spacing & Radius */
   --radius: 12px;
   --radius-lg: 20px;
+  --radius-full: 9999px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -28,20 +54,20 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--dark);
-  color: var(--light);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Red Hat Display', sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
 
 a { text-decoration: none; color: inherit; transition: var(--transition); }
-a:hover { color: var(--primary-light); }
+a:hover { color: var(--primary-dark); }
 
 button {
   cursor: pointer;
@@ -71,15 +97,12 @@ img { max-width: 100%; height: auto; display: block; }
 .section-header h2 {
   font-size: clamp(2rem, 5vw, 3rem);
   margin-bottom: 16px;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
 }
 
 .section-header p {
   font-size: 1.1rem;
-  color: var(--gray-light);
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -90,49 +113,50 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   gap: 8px;
   padding: 14px 32px;
-  border-radius: var(--radius);
-  font-weight: 600;
+  border-radius: var(--radius-full);
+  font-weight: 700;
   font-size: 1rem;
   transition: var(--transition);
 }
 
 .btn-primary {
   background: var(--gradient);
-  color: var(--white);
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  color: var(--text-light);
+  box-shadow: 0 4px 15px rgba(224, 192, 96, 0.35);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
-  color: var(--white);
+  box-shadow: 0 8px 25px rgba(224, 192, 96, 0.45);
+  color: var(--text-light);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--light);
-  border: 2px solid var(--gray);
+  color: var(--text-primary);
+  border: 2px solid var(--text-muted);
 }
 
 .btn-secondary:hover {
   border-color: var(--primary);
-  color: var(--primary-light);
+  color: var(--primary-dark);
   transform: translateY(-2px);
 }
 
 /* Cards */
 .card {
-  background: var(--dark-light);
+  background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: 32px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   transition: var(--transition);
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
-  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  border-color: var(--primary-border);
 }
 
 /* Gradient text utility */
@@ -141,13 +165,6 @@ img { max-width: 100%; height: auto; display: block; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-/* Glass effect */
-.glass {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* Grid */
@@ -163,9 +180,9 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 500;
-  background: rgba(99, 102, 241, 0.1);
-  color: var(--primary-light);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: var(--primary-bg);
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-border);
 }
 
 /* Form elements */
@@ -173,9 +190,9 @@ input, textarea, select {
   width: 100%;
   padding: 14px 18px;
   border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.1);
-  background: var(--dark-light);
-  color: var(--light);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 1rem;
   transition: var(--transition);
@@ -184,9 +201,10 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 0 3px rgba(224, 192, 96, 0.15);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .section { padding: 60px 0; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
