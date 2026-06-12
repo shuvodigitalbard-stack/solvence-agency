@@ -24,7 +24,6 @@ import AdminLogin from './pages/admin/AdminLogin';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -33,14 +32,9 @@ function App() {
       <Router>
         <Toaster position="top-right" />
         <Routes>
-          {/* Admin Login (no navbar) */}
           <Route path="/admin/login" element={<AdminLogin />} />
-
-          {/* Admin Routes */}
           <Route path="/admin" element={
-            <ProtectedRoute>
-              <AdminLayout />
-            </ProtectedRoute>
+            <ProtectedRoute><AdminLayout /></ProtectedRoute>
           }>
             <Route index element={<AdminDashboard />} />
             <Route path="services" element={<AdminServices />} />
@@ -48,8 +42,6 @@ function App() {
             <Route path="messages" element={<AdminMessages />} />
             <Route path="team" element={<AdminTeam />} />
           </Route>
-
-          {/* Public Routes */}
           <Route path="*" element={
             <>
               <Navbar />
@@ -65,7 +57,6 @@ function App() {
                 </Routes>
               </main>
               <Footer />
-              <WhatsAppButton />
             </>
           } />
         </Routes>
