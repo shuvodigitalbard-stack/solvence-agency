@@ -387,3 +387,126 @@ input::placeholder, textarea::placeholder {
 [data-sonner-toast] {
   font-family: 'Inter', sans-serif !important;
 }
+
+/* ===== CUSTOM CURSOR ===== */
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+  a, button, [role="button"], .btn, input, textarea, select { cursor: none !important; }
+}
+
+/* ===== 3D TILT CARD ===== */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ===== MAGNETIC BUTTON ===== */
+.magnetic {
+  will-change: transform;
+}
+
+/* ===== PARALLAX SECTION ===== */
+.parallax-section {
+  will-change: transform;
+}
+
+/* ===== GLOW EFFECT ===== */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(224, 192, 96, 0.3), 0 0 40px rgba(224, 192, 96, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(224, 192, 96, 0.5), 0 0 60px rgba(224, 192, 96, 0.2); }
+}
+
+.glow { animation: glow 3s ease-in-out infinite; }
+
+/* ===== FLOATING ANIMATION ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float { animation: float 3s ease-in-out infinite; }
+
+/* ===== ROTATE ANIMATION ===== */
+@keyframes rotate3d {
+  0% { transform: perspective(1000px) rotateY(0deg); }
+  100% { transform: perspective(1000px) rotateY(360deg); }
+}
+
+.rotate3d { animation: rotate3d 20s linear infinite; }
+
+/* ===== SHIMMER EFFECT ===== */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ===== RIPPLE EFFECT ===== */
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* ===== GLASS MORPHISM ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== NEON GLOW TEXT ===== */
+.neon-text {
+  text-shadow: 0 0 10px rgba(224, 192, 96, 0.5), 0 0 20px rgba(224, 192, 96, 0.3), 0 0 40px rgba(224, 192, 96, 0.1);
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HOVER LIFT ===== */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== BORDER GRADIENT ===== */
+.border-gradient {
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), var(--gradient);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* ===== TEXT STROKE ===== */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(224, 192, 96, 0.3);
+  color: transparent;
+}
+
+/* ===== NOISE TEXTURE OVERLAY ===== */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FiCheck, FiX, FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import TiltCard from '../components/TiltCard';
+import MagneticButton from '../components/MagneticButton';
 
 const plans = [
   {
@@ -89,19 +91,16 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Cards */}
-      <section style={{ padding: '32px 0 60px', background: '#fff' }}>
+      <section style={{ padding: '32px 0 60px', background: '#fff', position: 'relative', zIndex: 1 }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', maxWidth: '1000px', margin: '0 auto' }}>
             {plans.map((plan, i) => (
-              <div key={i} style={{
+              <TiltCard key={i} intensity={12} glare={true} style={{
                 background: '#fff', borderRadius: '20px', padding: '32px 28px',
                 border: plan.popular ? '2px solid #e0c060' : '1px solid rgba(0,0,0,0.08)',
                 boxShadow: plan.popular ? '0 8px 30px rgba(224,192,96,0.15)' : '0 2px 10px rgba(0,0,0,0.04)',
-                position: 'relative', transition: 'var(--transition)'
-              }}
-              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
-              onMouseLeave={e => e.currentTarget.style.transform = ''}
-              >
+                position: 'relative',
+              }}>
                 {plan.popular && (
                   <div style={{
                     position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
@@ -120,16 +119,18 @@ export default function Pricing() {
                   <span style={{ color: '#64748b', fontSize: '0.9rem' }}>{plan.period}</span>
                 </div>
 
-                <Link to="/contact" className="btn" style={{
-                  display: 'flex', justifyContent: 'center', width: '100%', marginBottom: '24px',
-                  padding: '12px', fontSize: '0.95rem',
-                  background: plan.popular ? 'var(--gradient)' : 'transparent',
-                  color: plan.popular ? '#fff' : '#1a1a2e',
-                  border: plan.popular ? 'none' : '2px solid rgba(0,0,0,0.1)',
-                  boxShadow: plan.popular ? '0 4px 15px rgba(224,192,96, 0.3)' : 'none'
-                }}>
-                  Get Started <FiArrowRight />
-                </Link>
+                <MagneticButton intensity={0.3}>
+                  <Link to="/contact" className="btn" style={{
+                    display: 'flex', justifyContent: 'center', width: '100%', marginBottom: '24px',
+                    padding: '12px', fontSize: '0.95rem',
+                    background: plan.popular ? 'var(--gradient)' : 'transparent',
+                    color: plan.popular ? '#fff' : '#1a1a2e',
+                    border: plan.popular ? 'none' : '2px solid rgba(0,0,0,0.1)',
+                    boxShadow: plan.popular ? '0 4px 15px rgba(224,192,96, 0.3)' : 'none'
+                  }}>
+                    Get Started <FiArrowRight />
+                  </Link>
+                </MagneticButton>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {plan.features.map((f, j) => (
@@ -147,16 +148,16 @@ export default function Pricing() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </TiltCard>
             ))}
           </div>
         </div>
       </section>
 
       {/* FAQ CTA */}
-      <section style={{ padding: '48px 0', background: 'var(--bg-primary)' }}>
+      <section style={{ padding: '48px 0', background: 'var(--bg-primary)', position: 'relative', zIndex: 1 }}>
         <div className="container">
-          <div style={{
+          <div className="glow" style={{
             background: 'var(--gradient)', borderRadius: '20px', padding: 'clamp(28px, 5vw, 40px)',
             textAlign: 'center'
           }}>
@@ -166,9 +167,11 @@ export default function Pricing() {
             <p style={{ color: 'rgba(255,255,255,0.85)', marginBottom: '20px', fontSize: '0.95rem' }}>
               Let's discuss your project and find the perfect solution.
             </p>
-            <Link to="/contact" className="btn" style={{ background: '#fff', color: '#c9a83c', border: 'none', padding: '12px 28px' }}>
-              Free Consultation
-            </Link>
+            <MagneticButton intensity={0.5}>
+              <Link to="/contact" className="btn" style={{ background: '#fff', color: '#c9a83c', border: 'none', padding: '12px 28px' }}>
+                Free Consultation
+              </Link>
+            </MagneticButton>
           </div>
         </div>
       </section>

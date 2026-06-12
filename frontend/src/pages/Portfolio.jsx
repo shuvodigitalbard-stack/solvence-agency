@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiExternalLink, FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import TiltCard from '../components/TiltCard';
 
 const categories = [
   { key: 'all', label: 'All Projects' },
@@ -95,17 +96,14 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Grid */}
-      <section style={{ padding: '32px 0 60px', background: '#fff' }}>
+      <section style={{ padding: '32px 0 60px', background: '#fff', position: 'relative', zIndex: 1 }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
             {filtered.map((project, i) => (
-              <div key={i} style={{
+              <TiltCard key={i} intensity={10} glare={true} style={{
                 background: '#fff', borderRadius: '16px', overflow: 'hidden',
-                border: '1px solid rgba(0,0,0,0.06)', transition: 'var(--transition)'
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 30px rgba(0,0,0,0.08)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = 'none'; }}
-              >
+                border: '1px solid rgba(0,0,0,0.06)',
+              }}>
                 {/* Project image area */}
                 <div style={{
                   height: '180px', display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -139,7 +137,7 @@ export default function Portfolio() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             ))}
           </div>
 

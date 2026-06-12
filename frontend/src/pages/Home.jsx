@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiCheck, FiUsers, FiAward, FiTrendingUp } from 'react-icons/fi';
 import { getServices } from '../services/api';
+import FloatingParticles from '../components/FloatingParticles';
+import ParallaxSection from '../components/ParallaxSection';
+import MagneticButton from '../components/MagneticButton';
 
 export default function Home() {
   const [services, setServices] = useState([]);
@@ -32,63 +35,75 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section style={{
-        padding: '90px 0 48px', position: 'relative', overflow: 'hidden',
-        background: 'var(--bg-primary)'
-      }}>
-        <div style={{
-          position: 'absolute', top: '-20%', right: '-10%', width: '600px', height: '600px',
-          background: 'radial-gradient(circle, rgba(224,192,96,0.1) 0%, transparent 60%)',
-          borderRadius: '50%', pointerEvents: 'none'
-        }} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '6px 18px', borderRadius: '50px',
-              background: 'rgba(224,192,96,0.1)', border: '1px solid rgba(224,192,96,0.25)',
-              marginBottom: '20px'
-            }}>
-              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#40a040', animation: 'pulse 2s infinite' }} />
-              <span style={{ fontSize: '0.8rem', color: '#c9a83c', fontWeight: 600 }}>Trusted by 50+ Businesses</span>
-            </div>
-            <h1 style={{
-              fontSize: 'clamp(2.2rem, 7vw, 4.2rem)', fontWeight: 900,
-              lineHeight: 1.1, marginBottom: '16px', fontFamily: 'Red Hat Display',
-              color: '#1a1a2e', letterSpacing: '-0.5px'
-            }}>
-              We Build <span className="gradient-text">Digital Solutions</span><br />That Drive Growth
-            </h1>
-            <p style={{
-              fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', color: '#4a5568',
-              maxWidth: '560px', margin: '0 auto 28px', lineHeight: 1.7
-            }}>
-              From custom web applications to data-driven marketing campaigns, we deliver technology solutions that help your business scale.
-            </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
-              <Link to="/contact" className="btn btn-primary" style={{ padding: '13px 28px', fontSize: '0.95rem' }}>
-                Start a Project <FiArrowRight />
-              </Link>
-              <Link to="/services" className="btn btn-secondary" style={{ padding: '13px 28px', fontSize: '0.95rem' }}>
-                Our Services
-              </Link>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', maxWidth: '560px', margin: '0 auto' }}>
-              {[
-                { icon: <FiUsers />, value: '50+', label: 'Happy Clients' },
-                { icon: <FiAward />, value: '100+', label: 'Projects Done' },
-                { icon: <FiTrendingUp />, value: '98%', label: 'Retention' },
-              ].map((s, i) => (
-                <div key={i} style={{ textAlign: 'center', padding: '14px 8px', background: '#fff', borderRadius: '14px', border: '1px solid rgba(0,0,0,0.06)' }}>
-                  <div style={{ color: '#c9a83c', marginBottom: '4px', display: 'flex', justifyContent: 'center', fontSize: '1.1rem' }}>{s.icon}</div>
-                  <div style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.6rem)', fontWeight: 800, fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>{s.value}</div>
-                  <div style={{ color: '#64748b', fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>{s.label}</div>
-                </div>
-              ))}
+      <ParallaxSection speed={0.4} mouseEffect={true}>
+        <section style={{
+          padding: '90px 0 48px', position: 'relative', overflow: 'hidden',
+          background: 'var(--bg-primary)'
+        }}>
+          <FloatingParticles count={50} />
+          <div style={{
+            position: 'absolute', top: '-20%', right: '-10%', width: '600px', height: '600px',
+            background: 'radial-gradient(circle, rgba(224,192,96,0.1) 0%, transparent 60%)',
+            borderRadius: '50%', pointerEvents: 'none'
+          }} />
+          <div style={{
+            position: 'absolute', bottom: '-10%', left: '-5%', width: '400px', height: '400px',
+            background: 'radial-gradient(circle, rgba(32,160,192,0.08) 0%, transparent 60%)',
+            borderRadius: '50%', pointerEvents: 'none'
+          }} />
+          <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+            <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
+              <div className="animate-fade-in-up" style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                padding: '6px 18px', borderRadius: '50px',
+                background: 'rgba(224,192,96,0.1)', border: '1px solid rgba(224,192,96,0.25)',
+                marginBottom: '20px'
+              }}>
+                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#40a040', animation: 'pulse 2s infinite' }} />
+                <span style={{ fontSize: '0.8rem', color: '#c9a83c', fontWeight: 600 }}>Trusted by 50+ Businesses</span>
+              </div>
+              <h1 className="animate-fade-in-up delay-1" style={{
+                fontSize: 'clamp(2.2rem, 7vw, 4.2rem)', fontWeight: 900,
+                lineHeight: 1.1, marginBottom: '16px', fontFamily: 'Red Hat Display',
+                color: '#1a1a2e', letterSpacing: '-0.5px'
+              }}>
+                We Build <span className="gradient-text">Digital Solutions</span><br />That Drive Growth
+              </h1>
+              <p className="animate-fade-in-up delay-2" style={{
+                fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', color: '#4a5568',
+                maxWidth: '560px', margin: '0 auto 28px', lineHeight: 1.7
+              }}>
+                From custom web applications to data-driven marketing campaigns, we deliver technology solutions that help your business scale.
+              </p>
+              <div className="animate-fade-in-up delay-3" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
+                <MagneticButton intensity={0.4}>
+                  <Link to="/contact" className="btn btn-primary" style={{ padding: '13px 28px', fontSize: '0.95rem' }}>
+                    Start a Project <FiArrowRight />
+                  </Link>
+                </MagneticButton>
+                <MagneticButton intensity={0.4}>
+                  <Link to="/services" className="btn btn-secondary" style={{ padding: '13px 28px', fontSize: '0.95rem' }}>
+                    Our Services
+                  </Link>
+                </MagneticButton>
+              </div>
+              <div className="animate-fade-in-up delay-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', maxWidth: '560px', margin: '0 auto' }}>
+                {[
+                  { icon: <FiUsers />, value: '50+', label: 'Happy Clients' },
+                  { icon: <FiAward />, value: '100+', label: 'Projects Done' },
+                  { icon: <FiTrendingUp />, value: '98%', label: 'Retention' },
+                ].map((s, i) => (
+                  <div key={i} className="hover-lift" style={{ textAlign: 'center', padding: '14px 8px', background: '#fff', borderRadius: '14px', border: '1px solid rgba(0,0,0,0.06)' }}>
+                    <div style={{ color: '#c9a83c', marginBottom: '4px', display: 'flex', justifyContent: 'center', fontSize: '1.1rem' }}>{s.icon}</div>
+                    <div style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.6rem)', fontWeight: 800, fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>{s.value}</div>
+                    <div style={{ color: '#64748b', fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ParallaxSection>
 
       {/* Services Preview */}
       <section style={{ background: '#fff', padding: '48px 0 60px' }}>
@@ -108,13 +123,15 @@ export default function Home() {
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
               {services.slice(0, 6).map((s, i) => (
-                <Link key={s._id} to={`/services/${s.slug}`} className="card" style={{ padding: '24px' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{s.icon}</div>
-                  <h3 style={{ fontSize: '1.1rem', marginBottom: '8px', fontFamily: 'Red Hat Display' }}>{s.title}</h3>
-                  <p style={{ color: '#4a5568', fontSize: '0.85rem', marginBottom: '12px', lineHeight: 1.6 }}>{s.shortDescription}</p>
-                  <span style={{ color: '#c9a83c', fontSize: '0.8rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                    Learn more <FiArrowRight size={12} />
-                  </span>
+                <Link key={s._id} to={`/services/${s.slug}`}>
+                  <div className="card tilt-card hover-lift" style={{ padding: '24px', height: '100%' }}>
+                    <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{s.icon}</div>
+                    <h3 style={{ fontSize: '1.1rem', marginBottom: '8px', fontFamily: 'Red Hat Display' }}>{s.title}</h3>
+                    <p style={{ color: '#4a5568', fontSize: '0.85rem', marginBottom: '12px', lineHeight: 1.6 }}>{s.shortDescription}</p>
+                    <span style={{ color: '#c9a83c', fontSize: '0.8rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                      Learn more <FiArrowRight size={12} />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
