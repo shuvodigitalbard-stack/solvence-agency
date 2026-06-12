@@ -24,7 +24,29 @@ import AdminLogin from './pages/admin/AdminLogin';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 import ProtectedRoute from './components/ProtectedRoute';
+
+function PublicLayout() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+        </Routes>
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </>
+  );
+}
 
 function App() {
   return (
@@ -33,32 +55,12 @@ function App() {
         <Toaster position="top-right" />
         <Routes>
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin" element={
-            <ProtectedRoute><AdminLayout /></ProtectedRoute>
-          }>
-            <Route index element={<AdminDashboard />} />
-            <Route path="services" element={<AdminServices />} />
-            <Route path="clients" element={<AdminClients />} />
-            <Route path="messages" element={<AdminMessages />} />
-            <Route path="team" element={<AdminTeam />} />
-          </Route>
-          <Route path="*" element={
-            <>
-              <Navbar />
-              <main>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/services" element={<Services />} />
-                  <Route path="/services/:slug" element={<ServiceDetail />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/pricing" element={<Pricing />} />
-                  <Route path="/portfolio" element={<Portfolio />} />
-                </Routes>
-              </main>
-              <Footer />
-            </>
+          <Route path="/admin/*" element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
           } />
+          <Route path="*" element={<PublicLayout />} />
         </Routes>
       </Router>
     </AuthProvider>
