@@ -50,19 +50,19 @@
 
 /* ===== DARK MODE ===== */
 .dark {
-  --primary: #e0c060;
-  --primary-dark: #f0d88a;
+  --primary: #f0d88a;
+  --primary-dark: #e0c060;
   --primary-light: #c9a83c;
-  --primary-bg: rgba(224, 192, 96, 0.12);
-  --primary-border: rgba(224, 192, 96, 0.3);
+  --primary-bg: rgba(240, 216, 138, 0.12);
+  --primary-border: rgba(240, 216, 138, 0.3);
 
-  --secondary: #40b8d8;
-  --secondary-dark: #20a0c0;
-  --secondary-light: #60d0e8;
-  --secondary-bg: rgba(32, 160, 192, 0.12);
+  --secondary: #60d0e8;
+  --secondary-dark: #40b8d8;
+  --secondary-light: #80e0f0;
+  --secondary-bg: rgba(96, 208, 232, 0.12);
 
-  --accent: #50c050;
-  --accent-dark: #40a040;
+  --accent: #60d060;
+  --accent-dark: #50c050;
 
   /* Dark Background Colors */
   --bg-primary: #0f0f1a;
@@ -82,9 +82,9 @@
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
 
   /* Dark Gradients */
-  --gradient: linear-gradient(135deg, #e0c060 0%, #40b8d8 100%);
-  --gradient-text: linear-gradient(135deg, #f0d88a, #40b8d8);
-  --gradient-gold: linear-gradient(135deg, #e0c060 0%, #c9a83c 100%);
+  --gradient: linear-gradient(135deg, #f0d88a 0%, #60d0e8 100%);
+  --gradient-text: linear-gradient(135deg, #f0d88a, #60d0e8);
+  --gradient-gold: linear-gradient(135deg, #f0d88a 0%, #e0c060 100%);
   --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
 }
 
