@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { FiHome, FiBriefcase, FiUsers, FiMessageSquare, FiSettings, FiLogOut, FiMenu, FiBarChart2 } from 'react-icons/fi';
+import { FiHome, FiBriefcase, FiUsers, FiMessageSquare, FiSettings, FiLogOut, FiMenu, FiBarChart2, FiSun, FiMoon } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import logoUrl from '../../assets/logo.png';
 
 export default function AdminLayout() {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const { dark, toggle } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const navItems = [
@@ -27,7 +29,7 @@ export default function AdminLayout() {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#f8f9fa' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-primary)' }}>
       {/* Mobile overlay */}
       <div
         className={`admin-sidebar-overlay ${sidebarOpen ? 'open' : ''}`}
@@ -36,7 +38,7 @@ export default function AdminLayout() {
 
       {/* Sidebar */}
       <aside className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`} style={{
-        width: '240px', background: '#1a1a2e',
+        width: '240px', background: 'var(--bg-dark)',
         borderRight: '1px solid rgba(255,255,255,0.05)',
         padding: '24px 0', display: 'flex', flexDirection: 'column'
       }}>
@@ -56,6 +58,34 @@ export default function AdminLayout() {
             </Link>
           ))}
         </nav>
+
+        {/* Theme Toggle in Sidebar */}
+        <div style={{ padding: '0 20px', marginBottom: '12px' }}>
+          <button
+            onClick={toggle}
+            style={{
+              width: '100%', padding: '10px 16px', borderRadius: '10px',
+              border: '1px solid rgba(255,255,255,0.08)',
+              background: dark ? 'rgba(224,192,96,0.1)' : 'rgba(255,255,255,0.05)',
+              color: dark ? '#e0c060' : '#94a3b8',
+              display: 'flex', alignItems: 'center', gap: '10px',
+              cursor: 'pointer', fontSize: '0.85rem', fontWeight: 500,
+              transition: 'var(--transition)',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = 'rgba(224,192,96,0.15)';
+              e.currentTarget.style.borderColor = 'rgba(224,192,96,0.3)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = dark ? 'rgba(224,192,96,0.1)' : 'rgba(255,255,255,0.05)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+            }}
+          >
+            {dark ? <FiSun size={16} /> : <FiMoon size={16} />}
+            {dark ? 'Light Mode' : 'Dark Mode'}
+          </button>
+        </div>
+
         <div style={{ padding: '0 20px' }}>
           <div style={{
             display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 0',
@@ -87,21 +117,32 @@ export default function AdminLayout() {
         <div className="admin-mobile-header" style={{
           display: 'none', alignItems: 'center', gap: '12px',
           marginBottom: '20px', paddingBottom: '16px',
-          borderBottom: '1px solid rgba(0,0,0,0.06)'
+          borderBottom: '1px solid var(--card-border)'
         }}>
           <button
             onClick={() => setSidebarOpen(true)}
             style={{
-              background: 'none', border: '1px solid rgba(0,0,0,0.1)',
+              background: 'none', border: '1px solid var(--card-border)',
               borderRadius: '8px', padding: '8px', cursor: 'pointer',
-              display: 'flex', alignItems: 'center', color: '#1a1a2e'
+              display: 'flex', alignItems: 'center', color: 'var(--text-primary)'
             }}
           >
             <FiMenu size={20} />
           </button>
-          <span style={{ fontWeight: 700, fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>
+          <span style={{ fontWeight: 700, fontFamily: 'Red Hat Display', color: 'var(--text-primary)' }}>
             Solvence Admin
           </span>
+          <button
+            onClick={toggle}
+            style={{
+              marginLeft: 'auto', width: '36px', height: '36px', borderRadius: '50%',
+              border: '1px solid var(--card-border)', background: 'var(--card-bg)',
+              color: 'var(--text-primary)', display: 'flex', alignItems: 'center',
+              justifyContent: 'center', cursor: 'pointer', fontSize: '1rem',
+            }}
+          >
+            {dark ? <FiSun /> : <FiMoon />}
+          </button>
         </div>
 
         <Outlet />

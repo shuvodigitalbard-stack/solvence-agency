@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
+import { useTheme } from '../context/ThemeContext';
 import logoUrl from '../assets/logo.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const { dark, toggle } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -16,7 +18,6 @@ export default function Navbar() {
 
   useEffect(() => { setMobileOpen(false); }, [location]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -38,10 +39,11 @@ export default function Navbar() {
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
         padding: scrolled ? '12px 0' : '20px 0',
-        background: scrolled ? 'rgba(248, 249, 250, 0.95)' : 'transparent',
+        background: scrolled ? 'var(--bg-secondary)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(0,0,0,0.06)' : 'none',
-        transition: 'all 0.3s ease'
+        borderBottom: scrolled ? '1px solid var(--card-border)' : 'none',
+        transition: 'all 0.3s ease',
+        boxShadow: scrolled ? 'var(--card-shadow)' : 'none',
       }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
@@ -52,7 +54,7 @@ export default function Navbar() {
           <div className="nav-links-desktop" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
             {links.map(l => (
               <Link key={l.to} to={l.to} style={{
-                color: isActive(l.to) ? '#c9a83c' : '#4a5568',
+                color: isActive(l.to) ? 'var(--primary-dark)' : 'var(--text-secondary)',
                 fontWeight: isActive(l.to) ? 600 : 500,
                 fontSize: '0.95rem',
                 position: 'relative'
@@ -66,29 +68,76 @@ export default function Navbar() {
                 )}
               </Link>
             ))}
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggle}
+              aria-label="Toggle dark mode"
+              style={{
+                width: '40px', height: '40px', borderRadius: '50%',
+                border: '1px solid var(--card-border)',
+                background: 'var(--card-bg)',
+                color: 'var(--text-primary)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', transition: 'var(--transition)',
+                fontSize: '1.1rem',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'var(--primary)';
+                e.currentTarget.style.color = '#fff';
+                e.currentTarget.style.borderColor = 'var(--primary)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'var(--card-bg)';
+                e.currentTarget.style.color = 'var(--text-primary)';
+                e.currentTarget.style.borderColor = 'var(--card-border)';
+              }}
+            >
+              {dark ? <FiSun /> : <FiMoon />}
+            </button>
+
             <Link to="/contact" className="btn btn-primary" style={{ padding: '10px 24px', fontSize: '0.9rem' }}>
               Get Started
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="nav-mobile-toggle"
-            style={{
-              background: 'none', color: '#1a1a2e', fontSize: '1.5rem',
-              display: 'none', cursor: 'pointer', padding: '4px'
-            }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <FiX /> : <FiMenu />}
-          </button>
+          {/* Mobile Right Side */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            {/* Theme Toggle (Mobile) */}
+            <button
+              onClick={toggle}
+              aria-label="Toggle dark mode"
+              style={{
+                width: '36px', height: '36px', borderRadius: '50%',
+                border: '1px solid var(--card-border)',
+                background: 'var(--card-bg)',
+                color: 'var(--text-primary)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', fontSize: '1rem',
+              }}
+            >
+              {dark ? <FiSun /> : <FiMoon />}
+            </button>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="nav-mobile-toggle"
+              style={{
+                background: 'none', color: 'var(--text-primary)', fontSize: '1.5rem',
+                display: 'none', cursor: 'pointer', padding: '4px'
+              }}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
       {mobileOpen && (
-        <div className="mobile-nav-overlay">
+        <div className="mobile-nav-overlay" style={{ background: 'var(--bg-primary)' }}>
           {links.map((l, i) => (
             <Link
               key={l.to}
@@ -96,7 +145,7 @@ export default function Navbar() {
               className={`animate-fade-in-up delay-${i + 1}`}
               style={{
                 fontSize: '1.5rem', fontWeight: 600,
-                color: isActive(l.to) ? '#c9a83c' : '#1a1a2e',
+                color: isActive(l.to) ? 'var(--primary-dark)' : 'var(--text-primary)',
                 opacity: 0
               }}
             >
