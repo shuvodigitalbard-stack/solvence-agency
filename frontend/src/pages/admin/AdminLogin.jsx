@@ -4,7 +4,7 @@ import { FiLock, FiMail } from 'react-icons/fi';
 import { login } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
-import logoUrl from '../../assets/logo.jpg';
+import logoUrl from '../../assets/logo.png';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');

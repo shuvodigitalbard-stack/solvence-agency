@@ -29,7 +29,7 @@ export default function About() {
     <>
       {/* Hero */}
       <section style={{
-        padding: '100px 0 40px', textAlign: 'center', background: 'var(--bg-primary)'
+        padding: '80px 0 32px', textAlign: 'center', background: 'var(--bg-primary)'
       }}>
         <div className="container">
           <h1 style={{
@@ -46,7 +46,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 0, background: '#fff' }}>
+      <section style={{ padding: '32px 0 48px', background: '#fff' }}>
         <div className="container">
           {/* Story + Stats */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'center', marginBottom: '80px' }}>

@@ -43,7 +43,7 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <section style={{ padding: '100px 0 40px', background: 'var(--bg-primary)' }}>
+      <section style={{ padding: '80px 0 32px', background: 'var(--bg-primary)' }}>
         <div className="container">
           <Link to="/services" style={{
             color: '#c9a83c', display: 'inline-flex', alignItems: 'center',

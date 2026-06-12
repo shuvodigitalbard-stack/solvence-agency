@@ -28,7 +28,7 @@ export default function Services() {
     <>
       {/* Hero */}
       <section style={{
-        padding: '100px 0 40px', textAlign: 'center', background: 'var(--bg-primary)'
+        padding: '80px 0 32px', textAlign: 'center', background: 'var(--bg-primary)'
       }}>
         <div className="container">
           <h1 style={{
@@ -38,7 +38,7 @@ export default function Services() {
             Our <span className="gradient-text">Services</span>
           </h1>
           <p style={{
-            color: '#4a5568', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 40px'
+            color: '#4a5568', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto 28px'
           }}>
             Comprehensive technology solutions to help your business grow
           </p>
@@ -69,7 +69,7 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section className="section" style={{ paddingTop: 0, background: '#fff' }}>
+      <section style={{ padding: '32px 0 48px', background: '#fff' }}>
         <div className="container">
           {loading ? (
             <div style={{ display: 'flex', justifyContent: 'center', padding: '80px 0' }}>

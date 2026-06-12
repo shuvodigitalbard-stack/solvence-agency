@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { FiHome, FiBriefcase, FiUsers, FiMessageSquare, FiSettings, FiLogOut, FiMenu } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
-import logoUrl from '../../assets/logo.jpg';
+import logoUrl from '../../assets/logo.png';
 
 export default function AdminLayout() {
   const location = useLocation();

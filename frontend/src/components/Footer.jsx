@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiPhone, FiMapPin, FiArrowUp } from 'react-icons/fi';
-import logoUrl from '../assets/logo.jpg';
+import logoUrl from '../assets/logo.png';
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
