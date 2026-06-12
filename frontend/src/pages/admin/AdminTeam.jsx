@@ -25,16 +25,16 @@ export default function AdminTeam() {
       <h1 style={{ fontSize: '1.8rem', marginBottom: '24px', fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e' }}>Team Members</h1>
       <form onSubmit={handleSubmit} className="card" style={{ marginBottom: '32px' }}>
         <h3 style={{ marginBottom: '16px', fontFamily: 'Red Hat Display' }}>{editing ? 'Edit Member' : 'Add Team Member'}</h3>
-        <div className="grid grid-2" style={{ gap: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '16px' }}>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Name *</label><input value={form.name} onChange={e => setForm({...form, name: e.target.value})} required /></div>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Role *</label><input value={form.role} onChange={e => setForm({...form, role: e.target.value})} required /></div>
         </div>
         <div style={{ marginBottom: '16px' }}><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Bio</label><textarea value={form.bio} onChange={e => setForm({...form, bio: e.target.value})} rows={2} /></div>
-        <div className="grid grid-2" style={{ gap: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '16px' }}>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Email</label><input value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></div>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>LinkedIn</label><input value={form.linkedin} onChange={e => setForm({...form, linkedin: e.target.value})} /></div>
         </div>
-        <div className="grid grid-2" style={{ gap: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '16px' }}>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>GitHub</label><input value={form.github} onChange={e => setForm({...form, github: e.target.value})} /></div>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Skills (comma separated)</label><input value={form.skills} onChange={e => setForm({...form, skills: e.target.value})} placeholder="React, Node.js" /></div>
         </div>

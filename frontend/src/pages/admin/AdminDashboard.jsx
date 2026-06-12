@@ -16,7 +16,7 @@ export default function AdminDashboard() {
   return (
     <div>
       <h1 style={{ fontSize: '1.8rem', marginBottom: '24px', fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e' }}>Dashboard</h1>
-      <div className="grid grid-4" style={{ marginBottom: '32px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '32px' }}>
         {cards.map((c, i) => (
           <div key={i} className="card" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: c.color + '15', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.3rem', color: c.color }}>{c.icon}</div>

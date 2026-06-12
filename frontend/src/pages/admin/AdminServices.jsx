@@ -30,13 +30,13 @@ export default function AdminServices() {
       <h1 style={{ fontSize: '1.8rem', marginBottom: '24px', fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e' }}>Services</h1>
       <form onSubmit={handleSubmit} className="card" style={{ marginBottom: '32px' }}>
         <h3 style={{ marginBottom: '16px', fontFamily: 'Red Hat Display' }}>{editing ? 'Edit Service' : 'Add New Service'}</h3>
-        <div className="grid grid-2" style={{ gap: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '16px' }}>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Title</label><input value={form.title} onChange={e => setForm({...form, title: e.target.value})} required /></div>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Slug</label><input value={form.slug} onChange={e => setForm({...form, slug: e.target.value})} required /></div>
         </div>
         <div style={{ marginBottom: '16px' }}><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Short Description</label><input value={form.shortDescription} onChange={e => setForm({...form, shortDescription: e.target.value})} required /></div>
         <div style={{ marginBottom: '16px' }}><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Full Description</label><textarea value={form.fullDescription} onChange={e => setForm({...form, fullDescription: e.target.value})} rows={3} /></div>
-        <div className="grid grid-2" style={{ gap: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '16px' }}>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Icon (emoji)</label><input value={form.icon} onChange={e => setForm({...form, icon: e.target.value})} /></div>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Category</label>
             <select value={form.category} onChange={e => setForm({...form, category: e.target.value})}>

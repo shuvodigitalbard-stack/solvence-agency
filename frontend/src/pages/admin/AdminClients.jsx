@@ -24,15 +24,15 @@ export default function AdminClients() {
       <h1 style={{ fontSize: '1.8rem', marginBottom: '24px', fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e' }}>Clients</h1>
       <form onSubmit={handleSubmit} className="card" style={{ marginBottom: '32px' }}>
         <h3 style={{ marginBottom: '16px', fontFamily: 'Red Hat Display' }}>{editing ? 'Edit Client' : 'Add Client'}</h3>
-        <div className="grid grid-2" style={{ gap: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '16px' }}>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Name *</label><input value={form.name} onChange={e => setForm({...form, name: e.target.value})} required /></div>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Email</label><input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></div>
         </div>
-        <div className="grid grid-2" style={{ gap: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '16px' }}>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Phone</label><input value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} /></div>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Company</label><input value={form.company} onChange={e => setForm({...form, company: e.target.value})} /></div>
         </div>
-        <div className="grid grid-2" style={{ gap: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '16px' }}>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Website</label><input value={form.website} onChange={e => setForm({...form, website: e.target.value})} /></div>
           <div><label style={{ display: 'block', marginBottom: '4px', color: '#4a5568', fontSize: '0.85rem' }}>Status</label>
             <select value={form.status} onChange={e => setForm({...form, status: e.target.value})}><option value="active">Active</option><option value="inactive">Inactive</option><option value="prospect">Prospect</option><option value="completed">Completed</option></select>
