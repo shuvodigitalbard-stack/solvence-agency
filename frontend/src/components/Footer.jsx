@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiGithub, FiLinkedin, FiTwitter, FiMail, FiPhone, FiMapPin, FiArrowUp } from 'react-icons/fi';
+import logoUrl from '../assets/logo.jpg';
 
 export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -11,9 +12,8 @@ export default function Footer() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '32px', marginBottom: '40px' }}>
           {/* Brand */}
           <div>
-            <Link to="/" style={{ fontSize: '1.5rem', fontWeight: 800, fontFamily: 'Red Hat Display', display: 'block', marginBottom: '16px' }}>
-              <span className="gradient-text">Solvence</span>
-              <span style={{ color: '#94a3b8', fontWeight: 400 }}> Tech</span>
+            <Link to="/" style={{ display: 'inline-block', marginBottom: '16px' }}>
+              <img src={logoUrl} alt="Solvence Tech" style={{ height: '48px', width: 'auto' }} />
             </Link>
             <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: 1.8 }}>
               Empowering businesses with cutting-edge technology solutions. From web development to digital marketing.

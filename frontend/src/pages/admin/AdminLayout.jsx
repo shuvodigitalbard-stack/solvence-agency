@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { FiHome, FiBriefcase, FiUsers, FiMessageSquare, FiSettings, FiLogOut, FiMenu } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
+import logoUrl from '../../assets/logo.jpg';
 
 export default function AdminLayout() {
   const location = useLocation();
@@ -38,10 +39,8 @@ export default function AdminLayout() {
         borderRight: '1px solid rgba(255,255,255,0.05)',
         padding: '24px 0', display: 'flex', flexDirection: 'column'
       }}>
-        <div style={{ padding: '0 20px', marginBottom: '32px' }}>
-          <Link to="/" style={{ fontSize: '1.3rem', fontWeight: 800, fontFamily: 'Red Hat Display' }}>
-            <span className="gradient-text">Solvence</span>
-          </Link>
+        <div style={{ padding: '0 20px', marginBottom: '32px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <img src={logoUrl} alt="Solvence" style={{ height: '32px', width: 'auto' }} />
         </div>
         <nav style={{ flex: 1 }}>
           {navItems.map(item => (

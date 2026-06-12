@@ -43,7 +43,7 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <section style={{ padding: '140px 0 60px', background: 'var(--bg-primary)' }}>
+      <section style={{ padding: '100px 0 40px', background: 'var(--bg-primary)' }}>
         <div className="container">
           <Link to="/services" style={{
             color: '#c9a83c', display: 'inline-flex', alignItems: 'center',
@@ -56,7 +56,7 @@ export default function ServiceDetail() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', alignItems: 'center' }}>
             <div>
-              <div style={{ fontSize: '4rem', marginBottom: '20px' }}>{service.icon}</div>
+              <div style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', marginBottom: '16px' }}>{service.icon}</div>
               <h1 style={{
                 fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: '20px',
                 fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e'
@@ -107,7 +107,7 @@ export default function ServiceDetail() {
       <section style={{ padding: '60px 0', background: '#fff' }}>
         <div className="container">
           <div style={{
-            background: 'var(--bg-primary)', borderRadius: '20px', padding: '40px',
+            background: 'var(--bg-primary)', borderRadius: '20px', padding: 'clamp(24px, 4vw, 40px)',
             textAlign: 'center', border: '1px solid rgba(0,0,0,0.06)'
           }}>
             <h2 style={{

@@ -4,6 +4,7 @@ import { FiLock, FiMail } from 'react-icons/fi';
 import { login } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
+import logoUrl from '../../assets/logo.jpg';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -28,7 +29,7 @@ export default function AdminLogin() {
     <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8f9fa' }}>
       <div className="card" style={{ width: '100%', maxWidth: '420px', padding: '40px' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'var(--gradient)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: '1.5rem', color: '#fff' }}><FiLock /></div>
+          <img src={logoUrl} alt="Solvence Tech" style={{ height: '56px', width: 'auto', margin: '0 auto 16px' }} />
           <h2 style={{ fontFamily: 'Red Hat Display', fontWeight: 900, color: '#1a1a2e' }}>Admin Login</h2>
           <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Sign in to manage your agency</p>
         </div>

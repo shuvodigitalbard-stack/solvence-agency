@@ -56,7 +56,7 @@ export default function Contact() {
     <>
       {/* Hero */}
       <section style={{
-        padding: '140px 0 60px', textAlign: 'center', background: 'var(--bg-primary)'
+        padding: '100px 0 40px', textAlign: 'center', background: 'var(--bg-primary)'
       }}>
         <div className="container">
           <h1 style={{
