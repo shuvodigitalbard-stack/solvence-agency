@@ -42,12 +42,8 @@ export default function Navbar() {
         transition: 'all 0.3s ease'
       }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
             <img src={logoUrl} alt="Solvence Tech" style={{ height: '40px', width: 'auto' }} />
-            <span style={{ fontSize: '1.4rem', fontWeight: 800, fontFamily: 'Red Hat Display' }}>
-              <span className="gradient-text">Solvence</span>
-              <span style={{ color: '#64748b', fontWeight: 400 }}> Tech</span>
-            </span>
           </Link>
 
           {/* Desktop Nav */}
