@@ -51,7 +51,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="nav-links-desktop" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+          <div className="nav-links-desktop" style={{ display: 'none', gap: '32px', alignItems: 'center' }}>
             {links.map(l => (
               <Link key={l.to} to={l.to} style={{
                 color: isActive(l.to) ? 'var(--primary-dark)' : 'var(--text-secondary)',
@@ -73,6 +73,7 @@ export default function Navbar() {
             <button
               onClick={toggle}
               aria-label="Toggle dark mode"
+              className="desktop-theme-toggle"
               style={{
                 width: '40px', height: '40px', borderRadius: '50%',
                 border: '1px solid var(--card-border)',
@@ -101,14 +102,14 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Right Side — hidden on desktop */}
-          <div style={{ display: 'none', alignItems: 'center', gap: '12px' }}>
+          {/* Mobile Buttons Row */}
+          <div className="nav-mobile-buttons" style={{ display: 'none', alignItems: 'center', gap: '10px' }}>
             {/* Mobile Theme Toggle */}
             <button
               onClick={toggle}
               aria-label="Toggle dark mode"
               style={{
-                width: '36px', height: '36px', borderRadius: '50%',
+                width: '38px', height: '38px', borderRadius: '50%',
                 border: '1px solid var(--card-border)',
                 background: 'var(--card-bg)',
                 color: 'var(--text-primary)',
@@ -119,12 +120,12 @@ export default function Navbar() {
               {dark ? <FiSun /> : <FiMoon />}
             </button>
 
-            {/* Mobile Menu Toggle */}
+            {/* Hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               style={{
-                background: 'none', color: 'var(--text-primary)', fontSize: '1.5rem',
-                display: 'none', cursor: 'pointer', padding: '4px'
+                background: 'none', color: 'var(--text-primary)', fontSize: '1.6rem',
+                display: 'flex', cursor: 'pointer', padding: '4px', border: 'none',
               }}
               aria-label="Toggle menu"
             >
@@ -151,20 +152,6 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          {/* Mobile Toggle in Overlay */}
-          <button
-            onClick={toggle}
-            style={{
-              background: 'var(--card-bg)', border: '1px solid var(--card-border)',
-              borderRadius: '50px', padding: '12px 24px',
-              color: 'var(--text-primary)', fontSize: '1rem',
-              display: 'flex', alignItems: 'center', gap: '8px',
-              cursor: 'pointer',
-            }}
-          >
-            {dark ? <FiSun /> : <FiMoon />}
-            {dark ? 'Light Mode' : 'Dark Mode'}
-          </button>
           <Link
             to="/contact"
             className="btn btn-primary animate-fade-in-up delay-5"

@@ -549,3 +549,13 @@ input::placeholder, textarea::placeholder {
   pointer-events: none;
   z-index: 1;
 }
+
+/* ===== NAVBAR RESPONSIVE ===== */
+@media (min-width: 769px) {
+  .nav-links-desktop { display: flex !important; }
+  .nav-mobile-buttons { display: none !important; }
+}
+@media (max-width: 768px) {
+  .nav-links-desktop { display: none !important; }
+  .nav-mobile-buttons { display: flex !important; }
+}
