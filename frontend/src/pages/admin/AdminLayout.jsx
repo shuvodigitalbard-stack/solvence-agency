@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { FiHome, FiBriefcase, FiUsers, FiMessageSquare, FiSettings, FiLogOut, FiMenu } from 'react-icons/fi';
+import { FiHome, FiBriefcase, FiUsers, FiMessageSquare, FiSettings, FiLogOut, FiMenu, FiBarChart2 } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
 import logoUrl from '../../assets/logo.png';
 
@@ -16,6 +16,7 @@ export default function AdminLayout() {
     { to: '/admin/clients', icon: <FiUsers />, label: 'Clients' },
     { to: '/admin/messages', icon: <FiMessageSquare />, label: 'Messages' },
     { to: '/admin/team', icon: <FiSettings />, label: 'Team' },
+    { to: '/admin/tracking', icon: <FiBarChart2 />, label: 'Tracking' },
   ];
 
   const handleLogout = () => { logout(); navigate('/'); };

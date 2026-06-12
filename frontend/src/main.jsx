@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import CustomCursor from './components/CustomCursor'
+import TrackingScripts from './components/TrackingScripts'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <TrackingScripts />
     <CustomCursor />
     <App />
   </React.StrictMode>

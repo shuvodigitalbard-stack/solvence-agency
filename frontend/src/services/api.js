@@ -46,4 +46,12 @@ export const createTeamMember = (data) => API.post('/team', data);
 export const updateTeamMember = (id, data) => API.put(`/team/${id}`, data);
 export const deleteTeamMember = (id) => API.delete(`/team/${id}`);
 
+// Settings
+export const getSettings = (group) => API.get(`/settings${group ? `/${group}` : ''}`);
+export const updateSetting = (key, data) => API.put(`/settings/${key}`, data);
+
+// Tracking
+export const getTrackingSettings = () => API.get('/settings/tracking');
+export const updateTrackingSettings = (data) => API.post('/settings/tracking', data);
+
 export default API;

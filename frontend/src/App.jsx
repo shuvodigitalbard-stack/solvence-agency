@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
+import { trackPageView } from './components/TrackingScripts';
 
 // Public Pages
 import Home from './pages/Home';
@@ -20,6 +21,7 @@ import AdminClients from './pages/admin/AdminClients';
 import AdminMessages from './pages/admin/AdminMessages';
 import AdminTeam from './pages/admin/AdminTeam';
 import AdminLogin from './pages/admin/AdminLogin';
+import AdminTracking from './pages/admin/AdminTracking';
 
 // Components
 import Navbar from './components/Navbar';
@@ -40,23 +42,42 @@ function PublicLayout() {
   );
 }
 
-function AppRoutes() {
+function PageViewTracker() {
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  useEffect(() => {
+    const pageNames = {
+      '/': 'Home',
+      '/services': 'Services',
+      '/about': 'About',
+      '/contact': 'Contact',
+      '/pricing': 'Pricing',
+      '/portfolio': 'Portfolio',
+    };
+    const pageName = pageNames[location.pathname] || location.pathname;
+    trackPageView(location.pathname, pageName);
+  }, [location]);
+  return null;
+}
 
-  if (isAdminRoute) {
-    return (
-      <Routes>
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/*" element={
-          <ProtectedRoute>
-            <AdminLayout />
-          </ProtectedRoute>
-        } />
-      </Routes>
-    );
-  }
+function AdminRoutes() {
+  return (
+    <Routes>
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin" element={
+        <ProtectedRoute><AdminLayout /></ProtectedRoute>
+      }>
+        <Route index element={<AdminDashboard />} />
+        <Route path="services" element={<AdminServices />} />
+        <Route path="clients" element={<AdminClients />} />
+        <Route path="messages" element={<AdminMessages />} />
+        <Route path="team" element={<AdminTeam />} />
+        <Route path="tracking" element={<AdminTracking />} />
+      </Route>
+    </Routes>
+  );
+}
 
+function PublicRoutes() {
   return (
     <Routes>
       <Route path="/" element={<PublicLayout />}>
@@ -70,6 +91,18 @@ function AppRoutes() {
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>
+  );
+}
+
+function AppRoutes() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
+  return (
+    <>
+      <PageViewTracker />
+      {isAdminRoute ? <AdminRoutes /> : <PublicRoutes />}
+    </>
   );
 }
 
