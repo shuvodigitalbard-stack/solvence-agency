@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 
@@ -27,13 +27,13 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import ProtectedRoute from './components/ProtectedRoute';
 
-function PublicShell() {
-  const location = useLocation();
-  const isAdmin = location.pathname.startsWith('/admin');
-  if (isAdmin) return null;
+function PublicLayout() {
   return (
     <>
       <Navbar />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
       <WhatsAppButton />
     </>
@@ -41,34 +41,35 @@ function PublicShell() {
 }
 
 function AppRoutes() {
-  return (
-    <>
-      <PublicShell />
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
+  if (isAdminRoute) {
+    return (
       <Routes>
-        {/* Admin Login */}
         <Route path="/admin/login" element={<AdminLogin />} />
-
-        {/* Admin Protected Routes */}
-        <Route path="/admin" element={
-          <ProtectedRoute><AdminLayout /></ProtectedRoute>
-        }>
-          <Route index element={<AdminDashboard />} />
-          <Route path="services" element={<AdminServices />} />
-          <Route path="clients" element={<AdminClients />} />
-          <Route path="messages" element={<AdminMessages />} />
-          <Route path="team" element={<AdminTeam />} />
-        </Route>
-
-        {/* Public Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/services/:slug" element={<ServiceDetail />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/admin/*" element={
+          <ProtectedRoute>
+            <AdminLayout />
+          </ProtectedRoute>
+        } />
       </Routes>
-    </>
+    );
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={<PublicLayout />}>
+        <Route index element={<Home />} />
+        <Route path="services" element={<Services />} />
+        <Route path="services/:slug" element={<ServiceDetail />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="pricing" element={<Pricing />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="*" element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 
