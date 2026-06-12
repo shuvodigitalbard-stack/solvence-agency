@@ -69,7 +69,7 @@ export default function Navbar() {
               </Link>
             ))}
 
-            {/* Theme Toggle */}
+            {/* Desktop Theme Toggle */}
             <button
               onClick={toggle}
               aria-label="Toggle dark mode"
@@ -101,9 +101,9 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Right Side */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            {/* Theme Toggle (Mobile) */}
+          {/* Mobile Right Side — hidden on desktop */}
+          <div style={{ display: 'none', alignItems: 'center', gap: '12px' }}>
+            {/* Mobile Theme Toggle */}
             <button
               onClick={toggle}
               aria-label="Toggle dark mode"
@@ -122,7 +122,6 @@ export default function Navbar() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="nav-mobile-toggle"
               style={{
                 background: 'none', color: 'var(--text-primary)', fontSize: '1.5rem',
                 display: 'none', cursor: 'pointer', padding: '4px'
@@ -152,6 +151,20 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          {/* Mobile Toggle in Overlay */}
+          <button
+            onClick={toggle}
+            style={{
+              background: 'var(--card-bg)', border: '1px solid var(--card-border)',
+              borderRadius: '50px', padding: '12px 24px',
+              color: 'var(--text-primary)', fontSize: '1rem',
+              display: 'flex', alignItems: 'center', gap: '8px',
+              cursor: 'pointer',
+            }}
+          >
+            {dark ? <FiSun /> : <FiMoon />}
+            {dark ? 'Light Mode' : 'Dark Mode'}
+          </button>
           <Link
             to="/contact"
             className="btn btn-primary animate-fade-in-up delay-5"

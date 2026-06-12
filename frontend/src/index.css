@@ -393,7 +393,6 @@ input::placeholder, textarea::placeholder {
 
   /* Hide desktop nav links */
   .nav-links-desktop { display: none !important; }
-  .nav-mobile-toggle { display: block !important; }
 
   /* Admin sidebar becomes overlay on mobile */
   .admin-sidebar {
