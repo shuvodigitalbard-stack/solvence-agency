@@ -55,7 +55,8 @@ export default function Footer() {
             <h4 style={{ marginBottom: '16px', fontSize: '1rem', color: '#fff', fontFamily: 'Red Hat Display' }}>Company</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <Link to="/about" style={{ color: '#64748b', fontSize: '0.9rem' }}>About Us</Link>
-              <Link to="/services" style={{ color: '#64748b', fontSize: '0.9rem' }}>Services</Link>
+              <Link to="/portfolio" style={{ color: '#64748b', fontSize: '0.9rem' }}>Portfolio</Link>
+              <Link to="/pricing" style={{ color: '#64748b', fontSize: '0.9rem' }}>Pricing</Link>
               <Link to="/contact" style={{ color: '#64748b', fontSize: '0.9rem' }}>Contact</Link>
               <Link to="/admin/login" style={{ color: '#64748b', fontSize: '0.9rem' }}>Admin</Link>
             </div>

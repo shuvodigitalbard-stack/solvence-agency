@@ -9,6 +9,8 @@ import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Pricing from './pages/Pricing';
+import Portfolio from './pages/Portfolio';
 
 // Admin Pages
 import AdminLayout from './pages/admin/AdminLayout';
@@ -22,6 +24,7 @@ import AdminLogin from './pages/admin/AdminLogin';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -57,9 +60,12 @@ function App() {
                   <Route path="/services/:slug" element={<ServiceDetail />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/pricing" element={<Pricing />} />
+                  <Route path="/portfolio" element={<Portfolio />} />
                 </Routes>
               </main>
               <Footer />
+              <WhatsAppButton />
             </>
           } />
         </Routes>

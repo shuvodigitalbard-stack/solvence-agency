@@ -1,11 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowRight, FiCheck, FiUsers, FiAward, FiTrendingUp, FiCode, FiSmartphone, FiBarChart2, FiSearch, FiPenTool, FiShield } from 'react-icons/fi';
+import { FiArrowRight, FiCheck, FiUsers, FiAward, FiTrendingUp } from 'react-icons/fi';
 import { getServices } from '../services/api';
+import ProcessTimeline from '../components/ProcessTimeline';
+import TechMarquee from '../components/TechMarquee';
+import { useCountUp, useInView } from '../hooks/useAnimations';
+
+function AnimatedStat({ value, label, icon, suffix = '+' }) {
+  const numValue = parseInt(value.replace(/\D/g, '')) || 0;
+  const { count, ref } = useCountUp(numValue, 2000);
+  const display = value.includes('%') ? `${count}%` : `${count}${suffix}`;
+
+  return (
+    <div ref={ref} style={{
+      textAlign: 'center', padding: '14px 8px', background: '#fff',
+      borderRadius: '14px', border: '1px solid rgba(0,0,0,0.06)'
+    }}>
+      <div style={{ color: '#c9a83c', marginBottom: '4px', display: 'flex', justifyContent: 'center', fontSize: '1.1rem' }}>{icon}</div>
+      <div style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.6rem)', fontWeight: 800, fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>{display}</div>
+      <div style={{ color: '#64748b', fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>{label}</div>
+    </div>
+  );
+}
 
 export default function Home() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { inView: statsInView, ref: statsRef } = useInView(0.2);
 
   useEffect(() => {
     getServices()
@@ -23,10 +44,10 @@ export default function Home() {
   ];
 
   const highlights = [
-    { value: '50+', label: 'Clients Served' },
-    { value: '100+', label: 'Projects Delivered' },
-    { value: '15+', label: 'Team Members' },
-    { value: '99%', label: 'Client Satisfaction' }
+    { value: 50, suffix: '+', label: 'Clients Served' },
+    { value: 100, suffix: '+', label: 'Projects Delivered' },
+    { value: 15, suffix: '+', label: 'Team Members' },
+    { value: 99, suffix: '%', label: 'Client Satisfaction' }
   ];
 
   return (
@@ -38,7 +59,6 @@ export default function Home() {
         overflow: 'hidden',
         background: 'var(--bg-primary)'
       }}>
-        {/* Decorative gradient orbs */}
         <div style={{
           position: 'absolute', top: '-20%', right: '-10%', width: '600px', height: '600px',
           background: 'radial-gradient(circle, rgba(224,192,96,0.1) 0%, transparent 60%)',
@@ -52,7 +72,6 @@ export default function Home() {
 
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
-            {/* Trust badge */}
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
               padding: '6px 18px', borderRadius: '50px',
@@ -68,7 +87,6 @@ export default function Home() {
               </span>
             </div>
 
-            {/* Main heading */}
             <h1 style={{
               fontSize: 'clamp(2.2rem, 7vw, 4.2rem)', fontWeight: 900,
               lineHeight: 1.1, marginBottom: '16px', fontFamily: 'Red Hat Display',
@@ -77,7 +95,6 @@ export default function Home() {
               We Build <span className="gradient-text">Digital Solutions</span><br />That Drive Growth
             </h1>
 
-            {/* Subtitle */}
             <p style={{
               fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', color: '#4a5568',
               maxWidth: '560px', margin: '0 auto 28px', lineHeight: 1.7
@@ -85,7 +102,6 @@ export default function Home() {
               From custom web applications to data-driven marketing campaigns, we deliver technology solutions that help your business scale.
             </p>
 
-            {/* CTA Buttons */}
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
               <Link to="/contact" className="btn btn-primary" style={{ padding: '13px 28px', fontSize: '0.95rem' }}>
                 Start a Project <FiArrowRight />
@@ -95,29 +111,21 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Stats row — compact */}
-            <div style={{
+            {/* Animated Stats */}
+            <div ref={statsRef} style={{
               display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px',
               maxWidth: '560px', margin: '0 auto'
             }}>
-              {[
-                { icon: <FiUsers />, value: '50+', label: 'Happy Clients' },
-                { icon: <FiAward />, value: '100+', label: 'Projects Done' },
-                { icon: <FiTrendingUp />, value: '98%', label: 'Retention' },
-              ].map((s, i) => (
-                <div key={i} style={{
-                  textAlign: 'center', padding: '14px 8px', background: '#fff',
-                  borderRadius: '14px', border: '1px solid rgba(0,0,0,0.06)'
-                }}>
-                  <div style={{ color: '#c9a83c', marginBottom: '4px', display: 'flex', justifyContent: 'center', fontSize: '1.1rem' }}>{s.icon}</div>
-                  <div style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.6rem)', fontWeight: 800, fontFamily: 'Red Hat Display', color: '#1a1a2e' }}>{s.value}</div>
-                  <div style={{ color: '#64748b', fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>{s.label}</div>
-                </div>
-              ))}
+              <AnimatedStat value="50" label="Happy Clients" icon={<FiUsers />} />
+              <AnimatedStat value="100" label="Projects Done" icon={<FiAward />} />
+              <AnimatedStat value="98" label="Retention" icon={<FiTrendingUp />} suffix="%" />
             </div>
           </div>
         </div>
       </section>
+
+      {/* ===== TECH MARQUEE ===== */}
+      <TechMarquee />
 
       {/* ===== SERVICES PREVIEW ===== */}
       <section style={{ background: '#fff', padding: '48px 0 60px' }}>
@@ -207,7 +215,7 @@ export default function Home() {
                     background: 'rgba(224,192,96,0.08)', borderRadius: '12px',
                     padding: 'clamp(10px, 3vw, 16px)', textAlign: 'center'
                   }}>
-                    <div style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: 800, color: '#1a1a2e' }}>{s.value}</div>
+                    <div style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: 800, color: '#1a1a2e' }}>{s.value}{s.suffix}</div>
                     <div style={{ color: '#64748b', fontSize: 'clamp(0.65rem, 1.6vw, 0.75rem)' }}>{s.label}</div>
                   </div>
                 ))}
@@ -216,6 +224,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== PROCESS TIMELINE ===== */}
+      <ProcessTimeline />
 
       {/* ===== CTA ===== */}
       <section style={{ padding: '48px 0', background: '#fff' }}>
