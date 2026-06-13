@@ -7,9 +7,9 @@ export default function AdminDashboard() {
   useEffect(() => { getMessageStats().then(r => setStats(r.data)).catch(() => {}); }, []);
 
   const cards = [
-    { icon: <FiMessageSquare />, label: 'Total Messages', value: stats.total, color: '#8db53a' },
-    { icon: <FiTrendingUp />, label: 'New Messages', value: stats.new, color: '#e8c547' },
-    { icon: <FiUsers />, label: 'Replied', value: stats.replied, color: '#2d8a4e' },
+    { icon: <FiMessageSquare />, label: 'Total Messages', value: stats.total, color: '#4ade80' },
+    { icon: <FiTrendingUp />, label: 'New Messages', value: stats.new, color: '#fbbf24' },
+    { icon: <FiUsers />, label: 'Replied', value: stats.replied, color: '#2dd4bf' },
     { icon: <FiBriefcase />, label: 'Services', value: 6, color: '#3b82f6' },
   ];
 

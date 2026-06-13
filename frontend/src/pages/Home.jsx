@@ -59,8 +59,8 @@ export default function Home() {
                 background: 'rgba(224,192,96,0.1)', border: '1px solid rgba(224,192,96,0.25)',
                 marginBottom: '20px'
               }}>
-                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#2d8a4e', animation: 'pulse 2s infinite' }} />
-                <span style={{ fontSize: '0.8rem', color: '#6b9220', fontWeight: 600 }}>Trusted by 50+ Businesses</span>
+                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#2dd4bf', animation: 'pulse 2s infinite' }} />
+                <span style={{ fontSize: '0.8rem', color: '#22c55e', fontWeight: 600 }}>Trusted by 50+ Businesses</span>
               </div>
               <h1 className="animate-fade-in-up delay-1" style={{
                 fontSize: 'clamp(2.2rem, 7vw, 4.2rem)', fontWeight: 900,
@@ -94,7 +94,7 @@ export default function Home() {
                   { icon: <FiTrendingUp />, value: '98%', label: 'Retention' },
                 ].map((s, i) => (
                   <div key={i} className="hover-lift" style={{ textAlign: 'center', padding: '14px 8px', background: 'var(--card-bg)', borderRadius: '14px', border: '1px solid var(--card-border)' }}>
-                    <div style={{ color: '#6b9220', marginBottom: '4px', display: 'flex', justifyContent: 'center', fontSize: '1.1rem' }}>{s.icon}</div>
+                    <div style={{ color: '#22c55e', marginBottom: '4px', display: 'flex', justifyContent: 'center', fontSize: '1.1rem' }}>{s.icon}</div>
                     <div style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.6rem)', fontWeight: 800, fontFamily: 'Red Hat Display', color: 'var(--text-primary)' }}>{s.value}</div>
                     <div style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>{s.label}</div>
                   </div>
@@ -128,7 +128,7 @@ export default function Home() {
                     <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{s.icon}</div>
                     <h3 style={{ fontSize: '1.1rem', marginBottom: '8px', fontFamily: 'Red Hat Display' }}>{s.title}</h3>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '12px', lineHeight: 1.6 }}>{s.shortDescription}</p>
-                    <span style={{ color: '#6b9220', fontSize: '0.8rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ color: '#22c55e', fontSize: '0.8rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                       Learn more <FiArrowRight size={12} />
                     </span>
                   </div>
@@ -156,7 +156,7 @@ export default function Home() {
               {features.map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
                   <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(224,192,96,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <FiCheck size={12} style={{ color: '#6b9220' }} />
+                    <FiCheck size={12} style={{ color: '#22c55e' }} />
                   </div>
                   <span style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)' }}>{item}</span>
                 </div>
@@ -195,7 +195,7 @@ export default function Home() {
             <p style={{ fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', opacity: 0.9, maxWidth: '460px', margin: '0 auto 24px', position: 'relative', zIndex: 1, color: '#fff', lineHeight: 1.6 }}>
               Let's discuss how we can help transform your business with technology.
             </p>
-            <Link to="/contact" className="btn" style={{ background: 'var(--card-bg)', color: '#6b9220', border: 'none', fontSize: '0.9rem', padding: '13px 28px', position: 'relative', zIndex: 1 }}>
+            <Link to="/contact" className="btn" style={{ background: 'var(--card-bg)', color: '#22c55e', border: 'none', fontSize: '0.9rem', padding: '13px 28px', position: 'relative', zIndex: 1 }}>
               Get Free Consultation <FiArrowRight />
             </Link>
           </div>

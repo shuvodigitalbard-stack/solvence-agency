@@ -51,7 +51,7 @@ export default function AdminLayout() {
               display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 20px',
               color: isActive(item.to) ? 'var(--primary)' : 'var(--text-muted)',
               background: isActive(item.to) ? 'rgba(224,192,96,0.1)' : 'transparent',
-              borderRight: isActive(item.to) ? '3px solid #8db53a' : '3px solid transparent',
+              borderRight: isActive(item.to) ? '3px solid #4ade80' : '3px solid transparent',
               fontSize: '0.9rem', fontWeight: 500, transition: 'var(--transition)'
             }}>
               {item.icon} {item.label}
@@ -67,7 +67,7 @@ export default function AdminLayout() {
               width: '100%', padding: '10px 16px', borderRadius: '10px',
               border: '1px solid rgba(255,255,255,0.08)',
               background: dark ? 'rgba(224,192,96,0.1)' : 'rgba(255,255,255,0.05)',
-              color: dark ? '#8db53a' : '#94a3b8',
+              color: dark ? '#4ade80' : '#94a3b8',
               display: 'flex', alignItems: 'center', gap: '10px',
               cursor: 'pointer', fontSize: '0.85rem', fontWeight: 500,
               transition: 'var(--transition)',

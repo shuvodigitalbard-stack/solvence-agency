@@ -1,45 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  /* Primary Colors - Greenish-Yellowish */
-  --primary: #8db53a;
-  --primary-dark: #6b9220;
-  --primary-light: #aed85c;
-  --primary-bg: rgba(141, 181, 58, 0.08);
-  --primary-border: rgba(141, 181, 58, 0.25);
+  /* === COOL PROFESSIONAL PALETTE === */
+  
+  /* Primary — Vibrant Green (CTAs, highlights, icons) */
+  --primary: #4ade80;
+  --primary-dark: #22c55e;
+  --primary-light: #86efac;
+  --primary-bg: rgba(74, 222, 128, 0.08);
+  --primary-border: rgba(74, 222, 128, 0.25);
 
-  /* Secondary Colors - Yellow/Gold */
-  --secondary: #e8c547;
-  --secondary-dark: #6b9220;
-  --secondary-light: #f5d97a;
-  --secondary-bg: rgba(232, 197, 71, 0.08);
+  /* Secondary — Warm Gold/Yellow (badges, stats, accents) */
+  --secondary: #fbbf24;
+  --secondary-dark: #f59e0b;
+  --secondary-light: #fde68a;
+  --secondary-bg: rgba(251, 191, 36, 0.08);
 
-  /* Accent - Deep Green */
-  --accent: #2d8a4e;
-  --accent-dark: #1e6b3a;
+  /* Accent — Teal/Cyan (links, hover states, tech elements) */
+  --accent: #2dd4bf;
+  --accent-dark: #14b8a6;
+  --accent-light: #5eead4;
+  --accent-bg: rgba(45, 212, 191, 0.08);
 
-  /* Background Colors - Light & Clean */
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #f1f3f5;
-  --bg-dark: #1a1a2e;
+  /* Success Green */
+  --success: #10b981;
+  --success-dark: #059669;
 
-  /* Text Colors */
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a5568;
+  /* Warning Amber */
+  --warning: #f59e0b;
+
+  /* Error Red */
+  --error: #ef4444;
+
+  /* === BACKGROUNDS === */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafb;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-hero: #f0fdf4;
+
+  /* === TEXT === */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
   --text-muted: #94a3b8;
   --text-light: #ffffff;
 
-  /* Card & Surface */
+  /* === SURFACE === */
   --card-bg: #ffffff;
   --card-border: rgba(0, 0, 0, 0.06);
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --card-shadow-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.08), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
 
-  /* Gradients - Green to Yellow */
-  --gradient: linear-gradient(135deg, #8db53a 0%, #e8c547 100%);
-  --gradient-text: linear-gradient(135deg, #8db53a, #e8c547);
-  --gradient-gold: linear-gradient(135deg, #e8c547 0%, #f5d97a 100%);
-  --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  /* === GRADIENTS === */
+  --gradient: linear-gradient(135deg, #4ade80 0%, #2dd4bf 50%, #fbbf24 100%);
+  --gradient-btn: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  --gradient-card: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
 
   /* Spacing & Radius */
   --radius: 12px;
@@ -50,42 +68,44 @@
 
 /* ===== DARK MODE ===== */
 .dark {
-  --primary: #aed85c;
-  --primary-dark: #8db53a;
-  --primary-light: #6b9220;
-  --primary-bg: rgba(174, 216, 92, 0.12);
-  --primary-border: rgba(174, 216, 92, 0.3);
+  --primary: #86efac;
+  --primary-dark: #4ade80;
+  --primary-light: #22c55e;
+  --primary-bg: rgba(134, 239, 172, 0.12);
+  --primary-border: rgba(134, 239, 172, 0.3);
 
-  --secondary: #f5d97a;
-  --secondary-dark: #e8c547;
-  --secondary-light: #6b9220;
-  --secondary-bg: rgba(245, 217, 122, 0.12);
+  --secondary: #fde68a;
+  --secondary-dark: #fbbf24;
+  --secondary-light: #f59e0b;
+  --secondary-bg: rgba(253, 230, 138, 0.12);
 
-  --accent: #4ade80;
-  --accent-dark: #22c55e;
+  --accent: #5eead4;
+  --accent-dark: #2dd4bf;
+  --accent-light: #14b8a6;
+  --accent-bg: rgba(94, 234, 212, 0.12);
 
-  /* Dark Background Colors */
-  --bg-primary: #0f0f1a;
-  --bg-secondary: #1a1a2e;
-  --bg-tertiary: #16213e;
-  --bg-dark: #0a0a15;
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1a2332;
+  --bg-card: #111827;
+  --bg-hero: #0f172a;
 
-  /* Dark Text Colors */
-  --text-primary: #e2e8f0;
+  --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-light: #ffffff;
 
-  /* Dark Card & Surface */
-  --card-bg: #1a1a2e;
+  --card-bg: #111827;
   --card-border: rgba(255, 255, 255, 0.06);
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.5), 0 4px 10px -2px rgba(0, 0, 0, 0.3);
 
-  /* Dark Gradients - Green to Yellow */
-  --gradient: linear-gradient(135deg, #aed85c 0%, #f5d97a 100%);
-  --gradient-text: linear-gradient(135deg, #aed85c, #f5d97a);
-  --gradient-gold: linear-gradient(135deg, #f5d97a 0%, #e8c547 100%);
-  --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+  --gradient: linear-gradient(135deg, #86efac 0%, #5eead4 50%, #fde68a 100%);
+  --gradient-btn: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
+  --gradient-card: linear-gradient(135deg, rgba(134,239,172,0.05) 0%, rgba(94,234,212,0.05) 100%);
+  --gradient-gold: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);
+  --gradient-dark: linear-gradient(135deg, #111827 0%, #0a0f1a 100%);
+  --gradient-hero: linear-gradient(135deg, #0a0f1a 0%, #111827 50%, #0a0f1a 100%);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

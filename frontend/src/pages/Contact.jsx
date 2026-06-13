@@ -82,7 +82,7 @@ export default function Contact() {
                 <div style={{
                   background: 'rgba(64,160,64,0.1)', border: '1px solid rgba(64,160,64,0.2)',
                   borderRadius: 'var(--radius)', padding: '16px 20px', marginBottom: '20px',
-                  display: 'flex', alignItems: 'center', gap: '10px', color: '#2d8a4e'
+                  display: 'flex', alignItems: 'center', gap: '10px', color: '#2dd4bf'
                 }}>
                   <FiCheck size={20} /> Message sent successfully!
                 </div>
@@ -188,7 +188,7 @@ export default function Contact() {
                         background: 'rgba(224,192,96,0.1)', display: 'flex',
                         alignItems: 'center', justifyContent: 'center', flexShrink: 0
                       }}>
-                        {React.cloneElement(item.icon, { style: { color: '#6b9220' } })}
+                        {React.cloneElement(item.icon, { style: { color: '#22c55e' } })}
                       </div>
                       <div>
                         <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{item.label}</div>

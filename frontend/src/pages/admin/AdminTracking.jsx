@@ -79,9 +79,9 @@ export default function AdminTracking() {
   };
 
   const tabs = [
-    { key: 'gtm', label: 'Google Tag Manager', icon: <FiCode />, color: '#e8c547' },
-    { key: 'ga4', label: 'Google Analytics 4', icon: <FiEye />, color: '#8db53a' },
-    { key: 'clarity', label: 'Microsoft Clarity', icon: <FiSettings />, color: '#2d8a4e' },
+    { key: 'gtm', label: 'Google Tag Manager', icon: <FiCode />, color: '#fbbf24' },
+    { key: 'ga4', label: 'Google Analytics 4', icon: <FiEye />, color: '#4ade80' },
+    { key: 'clarity', label: 'Microsoft Clarity', icon: <FiSettings />, color: '#2dd4bf' },
   ];
 
   const getPlaceholder = (tab) => {
@@ -160,7 +160,7 @@ export default function AdminTracking() {
         alignItems: 'flex-start',
         gap: '12px',
       }}>
-        <FiSettings style={{ color: '#6b9220', fontSize: '1.2rem', flexShrink: 0, marginTop: '2px' }} />
+        <FiSettings style={{ color: '#22c55e', fontSize: '1.2rem', flexShrink: 0, marginTop: '2px' }} />
         <div>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>
             <strong>How it works:</strong> Enter your tracking IDs below. The codes will be automatically injected into your website's header and body. 
@@ -253,7 +253,7 @@ export default function AdminTracking() {
                   placeholder={getPlaceholder(tab.key)}
                   style={{
                     paddingLeft: '42px',
-                    borderColor: getIdValue(tab.key) ? (isValidId(tab.key) ? '#2d8a4e' : '#ef4444') : undefined,
+                    borderColor: getIdValue(tab.key) ? (isValidId(tab.key) ? '#2dd4bf' : '#ef4444') : undefined,
                   }}
                 />
                 <FiCode style={{
@@ -264,7 +264,7 @@ export default function AdminTracking() {
                   <div style={{
                     position: 'absolute', right: '14px', top: '50%',
                     transform: 'translateY(-50%)',
-                    color: isValidId(tab.key) ? '#2d8a4e' : '#ef4444',
+                    color: isValidId(tab.key) ? '#2dd4bf' : '#ef4444',
                   }}>
                     {isValidId(tab.key) ? <FiCheck /> : '⚠'}
                   </div>
@@ -330,7 +330,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 📖 Setup Documentation →
               </a>
               {getIdValue(tab.key) && isValidId(tab.key) && (
-                <span style={{ color: '#2d8a4e', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ color: '#2dd4bf', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <FiCheck /> Ready to track
                 </span>
               )}

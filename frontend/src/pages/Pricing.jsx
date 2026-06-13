@@ -97,7 +97,7 @@ export default function Pricing() {
             {plans.map((plan, i) => (
               <TiltCard key={i} intensity={12} glare={true} style={{
                 background: 'var(--card-bg)', borderRadius: '20px', padding: '32px 28px',
-                border: plan.popular ? '2px solid #8db53a' : '1px solid rgba(0,0,0,0.08)',
+                border: plan.popular ? '2px solid #4ade80' : '1px solid rgba(0,0,0,0.08)',
                 boxShadow: plan.popular ? '0 8px 30px rgba(224,192,96,0.15)' : '0 2px 10px rgba(0,0,0,0.04)',
                 position: 'relative',
               }}>
@@ -137,7 +137,7 @@ export default function Pricing() {
                     <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       {f.included ? (
                         <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(64,160,64,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                          <FiCheck size={12} style={{ color: '#2d8a4e' }} />
+                          <FiCheck size={12} style={{ color: '#2dd4bf' }} />
                         </div>
                       ) : (
                         <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(148,163,184,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -168,7 +168,7 @@ export default function Pricing() {
               Let's discuss your project and find the perfect solution.
             </p>
             <MagneticButton intensity={0.5}>
-              <Link to="/contact" className="btn" style={{ background: 'var(--card-bg)', color: '#6b9220', border: 'none', padding: '12px 28px' }}>
+              <Link to="/contact" className="btn" style={{ background: 'var(--card-bg)', color: '#22c55e', border: 'none', padding: '12px 28px' }}>
                 Free Consultation
               </Link>
             </MagneticButton>

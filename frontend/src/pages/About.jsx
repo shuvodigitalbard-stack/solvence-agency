@@ -63,7 +63,7 @@ export default function About() {
               </p>
               {['Client-first approach', 'Transparent pricing', 'Agile methodology', 'Continuous support'].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                  <FiCheck style={{ color: '#6b9220', flexShrink: 0 }} />
+                  <FiCheck style={{ color: '#22c55e', flexShrink: 0 }} />
                   <span style={{ color: 'var(--text-secondary)' }}>{item}</span>
                 </div>
               ))}
@@ -125,7 +125,7 @@ export default function About() {
                       {m.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <h3 style={{ fontSize: '1.1rem', marginBottom: '4px', fontFamily: 'Red Hat Display' }}>{m.name}</h3>
-                    <p style={{ color: '#6b9220', fontSize: '0.85rem', marginBottom: '12px', fontWeight: 600 }}>{m.role}</p>
+                    <p style={{ color: '#22c55e', fontSize: '0.85rem', marginBottom: '12px', fontWeight: 600 }}>{m.role}</p>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>{m.bio}</p>
                   </div>
                 ))}

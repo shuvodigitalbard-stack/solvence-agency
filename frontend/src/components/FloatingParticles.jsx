@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export default function FloatingParticles({ count = 40, colors = ['#8db53a', '#e8c547', '#2d8a4e'] }) {
+export default function FloatingParticles({ count = 40, colors = ['#4ade80', '#fbbf24', '#2dd4bf'] }) {
   const canvasRef = useRef(null);
   const animRef = useRef(null);
 
