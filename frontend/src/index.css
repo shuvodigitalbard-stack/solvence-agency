@@ -433,6 +433,59 @@ input::placeholder, textarea::placeholder {
   a, button, [role="button"], .btn, input, textarea, select { cursor: none !important; }
 }
 
+/* Cursor ring spin */
+@keyframes cursorRingSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Cursor pulse animation */
+@keyframes cursorPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.15); opacity: 0.6; }
+}
+
+/* Click burst animation */
+@keyframes cursorBurst {
+  0% { transform: scale(0.5); opacity: 1; border-width: 3px; }
+  100% { transform: scale(2.5); opacity: 0; border-width: 0px; }
+}
+
+/* Dot glow pulse */
+.cursor-dot {
+  animation: cursorDotGlow 2s ease-in-out infinite;
+}
+
+@keyframes cursorDotGlow {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(224,192,96,0.6), 0 0 12px rgba(224,192,96,0.3), 0 0 18px rgba(224,192,96,0.15);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(224,192,96,0.8), 0 0 20px rgba(224,192,96,0.4), 0 0 35px rgba(32,160,192,0.2);
+  }
+}
+
+.cursor-dot-clicking {
+  box-shadow: 0 0 12px rgba(224,192,96,0.9), 0 0 24px rgba(224,192,96,0.5), 0 0 40px rgba(32,160,192,0.3) !important;
+}
+
+/* Ring glow states */
+.cursor-ring {
+  border: none;
+}
+
+.cursor-ring-hover {
+  border: none;
+}
+
+/* Smooth scale on hover expansion */
+@media (hover: hover) and (pointer: fine) {
+  a:hover ~ div div.ref,
+  button:hover ~ div div.ref {
+    transform: scale(1.5);
+  }
+}
+
 /* ===== 3D TILT CARD ===== */
 .tilt-card {
   transform-style: preserve-3d;
