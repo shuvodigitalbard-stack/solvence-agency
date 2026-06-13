@@ -138,9 +138,9 @@ export default function CustomCursor() {
         >
           <defs>
             <linearGradient id="cursorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#e0c060" />
-              <stop offset="50%" stopColor="#20a0c0" />
-              <stop offset="100%" stopColor="#e0c060" />
+              <stop offset="0%" stopColor="#8db53a" />
+              <stop offset="50%" stopColor="#e8c547" />
+              <stop offset="100%" stopColor="#8db53a" />
             </linearGradient>
           </defs>
           <circle
@@ -180,7 +180,7 @@ export default function CustomCursor() {
           width: '8px',
           height: '8px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle at 30% 30%, #f0d88a, #e0c060)',
+          background: 'radial-gradient(circle at 30% 30%, #aed85c, #8db53a)',
           pointerEvents: 'none',
           zIndex: 99999,
           boxShadow: '0 0 8px rgba(224,192,96,0.7), 0 0 16px rgba(224,192,96,0.35), 0 0 28px rgba(224,192,96,0.15)',

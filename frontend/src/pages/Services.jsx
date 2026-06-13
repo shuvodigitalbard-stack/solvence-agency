@@ -109,7 +109,7 @@ export default function Services() {
                   )}
 
                   <span style={{
-                    color: '#c9a83c', fontSize: '0.85rem', fontWeight: 600,
+                    color: '#6b9220', fontSize: '0.85rem', fontWeight: 600,
                     display: 'flex', alignItems: 'center', gap: '4px', marginTop: 'auto'
                   }}>
                     Learn more <FiArrowRight size={14} />

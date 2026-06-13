@@ -46,7 +46,7 @@ export default function ServiceDetail() {
       <section style={{ padding: '80px 0 32px', background: 'var(--bg-primary)' }}>
         <div className="container">
           <Link to="/services" style={{
-            color: '#c9a83c', display: 'inline-flex', alignItems: 'center',
+            color: '#6b9220', display: 'inline-flex', alignItems: 'center',
             gap: '8px', marginBottom: '24px', fontWeight: 600,
             padding: '8px 16px', borderRadius: '50px',
             background: 'rgba(224,192,96,0.1)', width: 'fit-content'
@@ -91,7 +91,7 @@ export default function ServiceDetail() {
                         background: 'rgba(224,192,96,0.15)', display: 'flex',
                         alignItems: 'center', justifyContent: 'center', flexShrink: 0
                       }}>
-                        <FiCheck size={14} style={{ color: '#c9a83c' }} />
+                        <FiCheck size={14} style={{ color: '#6b9220' }} />
                       </div>
                       <span style={{ color: 'var(--text-secondary)' }}>{f}</span>
                     </div>

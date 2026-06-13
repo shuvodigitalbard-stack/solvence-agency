@@ -7,19 +7,19 @@ const steps = [
     icon: <FiMessageSquare />,
     title: 'Discovery Call',
     description: 'We discuss your vision, goals, and requirements to understand your project inside out.',
-    color: '#e0c060'
+    color: '#8db53a'
   },
   {
     icon: <FiPenTool />,
     title: 'Strategy & Design',
     description: 'Our team creates wireframes, mockups, and a detailed project roadmap.',
-    color: '#20a0c0'
+    color: '#e8c547'
   },
   {
     icon: <FiCode />,
     title: 'Development',
     description: 'We build your solution using modern technologies with clean, scalable code.',
-    color: '#40a040'
+    color: '#2d8a4e'
   },
   {
     icon: <FiRocket />,

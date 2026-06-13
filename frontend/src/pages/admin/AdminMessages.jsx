@@ -9,7 +9,7 @@ export default function AdminMessages() {
   const load = () => getMessages(filter).then(r => setMessages(r.data)).catch(() => {});
   const handleStatus = async (id, status) => { try { await updateMessage(id, { status }); toast.success('Updated'); load(); } catch { toast.error('Error'); } };
   const handleDelete = async (id) => { if (!confirm('Delete?')) return; try { await deleteMessage(id); toast.success('Deleted'); load(); } catch { toast.error('Error'); } };
-  const sc = { new: '#20a0c0', read: '#f59e0b', replied: '#40a040', archived: '#64748b' };
+  const sc = { new: '#e8c547', read: '#f59e0b', replied: '#2d8a4e', archived: '#64748b' };
 
   return (
     <div>

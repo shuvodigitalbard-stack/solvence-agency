@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Red+Hat+Display:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  /* Primary Colors - from Solvence logo */
-  --primary: #e0c060;
-  --primary-dark: #c9a83c;
-  --primary-light: #f0d88a;
-  --primary-bg: rgba(224, 192, 96, 0.08);
-  --primary-border: rgba(224, 192, 96, 0.25);
+  /* Primary Colors - Greenish-Yellowish */
+  --primary: #8db53a;
+  --primary-dark: #6b9220;
+  --primary-light: #aed85c;
+  --primary-bg: rgba(141, 181, 58, 0.08);
+  --primary-border: rgba(141, 181, 58, 0.25);
 
-  /* Secondary Colors - Teal from logo */
-  --secondary: #20a0c0;
-  --secondary-dark: #1880a0;
-  --secondary-light: #40b8d8;
-  --secondary-bg: rgba(32, 160, 192, 0.08);
+  /* Secondary Colors - Yellow/Gold */
+  --secondary: #e8c547;
+  --secondary-dark: #6b9220;
+  --secondary-light: #f5d97a;
+  --secondary-bg: rgba(232, 197, 71, 0.08);
 
-  /* Accent - Green from logo */
-  --accent: #40a040;
-  --accent-dark: #308030;
+  /* Accent - Deep Green */
+  --accent: #2d8a4e;
+  --accent-dark: #1e6b3a;
 
   /* Background Colors - Light & Clean */
   --bg-primary: #f8f9fa;
@@ -35,10 +35,10 @@
   --card-border: rgba(0, 0, 0, 0.06);
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
 
-  /* Gradients - Gold to Teal (from logo) */
-  --gradient: linear-gradient(135deg, #e0c060 0%, #20a0c0 100%);
-  --gradient-text: linear-gradient(135deg, #e0c060, #20a0c0);
-  --gradient-gold: linear-gradient(135deg, #e0c060 0%, #f0d88a 100%);
+  /* Gradients - Green to Yellow */
+  --gradient: linear-gradient(135deg, #8db53a 0%, #e8c547 100%);
+  --gradient-text: linear-gradient(135deg, #8db53a, #e8c547);
+  --gradient-gold: linear-gradient(135deg, #e8c547 0%, #f5d97a 100%);
   --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 
   /* Spacing & Radius */
@@ -50,19 +50,19 @@
 
 /* ===== DARK MODE ===== */
 .dark {
-  --primary: #f0d88a;
-  --primary-dark: #e0c060;
-  --primary-light: #c9a83c;
-  --primary-bg: rgba(240, 216, 138, 0.12);
-  --primary-border: rgba(240, 216, 138, 0.3);
+  --primary: #aed85c;
+  --primary-dark: #8db53a;
+  --primary-light: #6b9220;
+  --primary-bg: rgba(174, 216, 92, 0.12);
+  --primary-border: rgba(174, 216, 92, 0.3);
 
-  --secondary: #60d0e8;
-  --secondary-dark: #40b8d8;
-  --secondary-light: #80e0f0;
-  --secondary-bg: rgba(96, 208, 232, 0.12);
+  --secondary: #f5d97a;
+  --secondary-dark: #e8c547;
+  --secondary-light: #6b9220;
+  --secondary-bg: rgba(245, 217, 122, 0.12);
 
-  --accent: #60d060;
-  --accent-dark: #50c050;
+  --accent: #4ade80;
+  --accent-dark: #22c55e;
 
   /* Dark Background Colors */
   --bg-primary: #0f0f1a;
@@ -81,10 +81,10 @@
   --card-border: rgba(255, 255, 255, 0.06);
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
 
-  /* Dark Gradients */
-  --gradient: linear-gradient(135deg, #f0d88a 0%, #60d0e8 100%);
-  --gradient-text: linear-gradient(135deg, #f0d88a, #60d0e8);
-  --gradient-gold: linear-gradient(135deg, #f0d88a 0%, #e0c060 100%);
+  /* Dark Gradients - Green to Yellow */
+  --gradient: linear-gradient(135deg, #aed85c 0%, #f5d97a 100%);
+  --gradient-text: linear-gradient(135deg, #aed85c, #f5d97a);
+  --gradient-gold: linear-gradient(135deg, #f5d97a 0%, #e8c547 100%);
   --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
 }
 

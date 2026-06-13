@@ -17,7 +17,7 @@ const projects = [
     category: 'web',
     description: 'Full-stack e-commerce solution with payment gateway, inventory management, and admin dashboard.',
     tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    color: '#e0c060',
+    color: '#8db53a',
     image: '🛒'
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     category: 'mobile',
     description: 'Cross-platform mobile app with real-time tracking, push notifications, and in-app payments.',
     tags: ['Flutter', 'Firebase', 'Google Maps'],
-    color: '#20a0c0',
+    color: '#e8c547',
     image: '🍔'
   },
   {
@@ -33,7 +33,7 @@ const projects = [
     category: 'marketing',
     description: 'Managed Google Ads campaign that increased client ROI by 340% in 3 months.',
     tags: ['Google Ads', 'Analytics', 'Conversion Tracking'],
-    color: '#40a040',
+    color: '#2d8a4e',
     image: '📈'
   },
   {
