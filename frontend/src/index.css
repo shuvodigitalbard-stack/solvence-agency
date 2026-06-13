@@ -186,31 +186,11 @@ img { max-width: 100%; height: auto; display: block; }
   transition: var(--transition);
 }
 
-.btn-primary {
-  background: var(--gradient);
-  color: var(--text-light);
-  box-shadow: 0 4px 15px rgba(224, 192, 96, 0.35);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(224, 192, 96, 0.45);
-  color: var(--text-light);
-}
-
-.btn-primary:active { transform: translateY(0); }
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border: 2px solid var(--text-muted);
-}
-
-.btn-secondary:hover {
-  border-color: var(--primary);
-  color: var(--primary-dark);
-  transform: translateY(-2px);
-}
+.btn-primary{background:var(--gradient-btn);color:var(--text-light);box-shadow:0 4px 15px rgba(74,222,128,0.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(74,222,128,0.45);color:var(--text-light)}
+.btn-primary:active{transform:translateY(0)}
+.btn-secondary{color:var(--text-primary);border:2px solid var(--text-muted);background:transparent}
+.btn-secondary:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
 
 .btn:disabled {
   opacity: 0.6;
@@ -276,7 +256,7 @@ input, textarea, select {
 input:focus, textarea:focus, select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(224, 192, 96, 0.15);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
 }
 
 input::placeholder, textarea::placeholder {
@@ -344,13 +324,8 @@ input::placeholder, textarea::placeholder {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: var(--gradient);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 15px rgba(224, 192, 96, 0.35);
+  background: var(--gradient-btn);
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.35);
   z-index: 999;
   cursor: pointer;
   border: none;
@@ -368,7 +343,7 @@ input::placeholder, textarea::placeholder {
 
 .scroll-top-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(224, 192, 96, 0.45);
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.45);
 }
 
 /* ===== MOBILE NAV ===== */
