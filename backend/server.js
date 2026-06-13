@@ -51,6 +51,9 @@ if (process.env.NODE_ENV === 'production') {
   app.get('/avatars/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'avatars', 'index.html'));
   });
+  app.get('/avatar', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'avatar.html'));
+  });
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
