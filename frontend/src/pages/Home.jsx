@@ -37,64 +37,70 @@ export default function Home() {
       {/* Hero */}
       <ParallaxSection speed={0.4} mouseEffect={true}>
         <section style={{
-          padding: '90px 0 48px', position: 'relative', overflow: 'hidden',
-          background: 'var(--bg-primary)'
+          padding: '100px 0 60px', position: 'relative', overflow: 'hidden',
+          background: 'var(--bg-hero)'
         }}>
           <FloatingParticles count={50} />
+          {/* Decorative blobs */}
           <div style={{
             position: 'absolute', top: '-20%', right: '-10%', width: '600px', height: '600px',
-            background: 'radial-gradient(circle, rgba(224,192,96,0.1) 0%, transparent 60%)',
+            background: 'radial-gradient(circle, rgba(74,222,128,0.12) 0%, transparent 60%)',
             borderRadius: '50%', pointerEvents: 'none'
           }} />
           <div style={{
             position: 'absolute', bottom: '-10%', left: '-5%', width: '400px', height: '400px',
-            background: 'radial-gradient(circle, rgba(32,160,192,0.08) 0%, transparent 60%)',
+            background: 'radial-gradient(circle, rgba(251,191,36,0.1) 0%, transparent 60%)',
+            borderRadius: '50%', pointerEvents: 'none'
+          }} />
+          <div style={{
+            position: 'absolute', top: '30%', left: '50%', width: '300px', height: '300px',
+            background: 'radial-gradient(circle, rgba(45,212,191,0.08) 0%, transparent 60%)',
             borderRadius: '50%', pointerEvents: 'none'
           }} />
           <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-            <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
               <div className="animate-fade-in-up" style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
-                padding: '6px 18px', borderRadius: '50px',
-                background: 'rgba(224,192,96,0.1)', border: '1px solid rgba(224,192,96,0.25)',
-                marginBottom: '20px'
+                padding: '8px 20px', borderRadius: '50px',
+                background: 'var(--primary-bg)', border: '1px solid var(--primary-border)',
+                marginBottom: '24px'
               }}>
-                <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#2dd4bf', animation: 'pulse 2s infinite' }} />
-                <span style={{ fontSize: '0.8rem', color: '#22c55e', fontWeight: 600 }}>Trusted by 50+ Businesses</span>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', animation: 'pulse 2s infinite' }} />
+                <span style={{ fontSize: '0.82rem', color: 'var(--primary)', fontWeight: 600 }}>Trusted by 50+ Businesses</span>
               </div>
               <h1 className="animate-fade-in-up delay-1" style={{
-                fontSize: 'clamp(2.2rem, 7vw, 4.2rem)', fontWeight: 900,
-                lineHeight: 1.1, marginBottom: '16px', fontFamily: 'Red Hat Display',
-                color: 'var(--text-primary)', letterSpacing: '-0.5px'
+                fontSize: 'clamp(2.4rem, 7vw, 4.5rem)', fontWeight: 900,
+                lineHeight: 1.08, marginBottom: '20px', fontFamily: 'Red Hat Display',
+                color: 'var(--text-primary)', letterSpacing: '-1px'
               }}>
                 We Build <span className="gradient-text">Digital Solutions</span><br />That Drive Growth
               </h1>
               <p className="animate-fade-in-up delay-2" style={{
                 fontSize: 'clamp(0.95rem, 2.5vw, 1.15rem)', color: 'var(--text-secondary)',
-                maxWidth: '560px', margin: '0 auto 28px', lineHeight: 1.7
+                maxWidth: '580px', margin: '0 auto 32px', lineHeight: 1.7
               }}>
                 From custom web applications to data-driven marketing campaigns, we deliver technology solutions that help your business scale.
               </p>
-              <div className="animate-fade-in-up delay-3" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
+              <div className="animate-fade-in-up delay-3" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '48px' }}>
                 <MagneticButton intensity={0.4}>
-                  <Link to="/contact" className="btn btn-primary" style={{ padding: '13px 28px', fontSize: '0.95rem' }}>
+                  <Link to="/contact" className="btn btn-primary" style={{ padding: '14px 32px', fontSize: '0.95rem', background: 'var(--gradient-btn)', color: '#fff', border: 'none', borderRadius: 'var(--radius)', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 4px 14px rgba(74,222,128,0.3)' }}>
                     Start a Project <FiArrowRight />
                   </Link>
                 </MagneticButton>
                 <MagneticButton intensity={0.4}>
-                  <Link to="/services" className="btn btn-secondary" style={{ padding: '13px 28px', fontSize: '0.95rem' }}>
+                  <Link to="/services" className="btn" style={{ padding: '14px 32px', fontSize: '0.95rem', background: 'var(--card-bg)', color: 'var(--text-primary)', border: '2px solid var(--card-border)', borderRadius: 'var(--radius)', fontWeight: 600 }}>
                     Our Services
                   </Link>
                 </MagneticButton>
               </div>
-              <div className="animate-fade-in-up delay-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', maxWidth: '560px', margin: '0 auto' }}>
+              <div className="animate-fade-in-up delay-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', maxWidth: '560px', margin: '0 auto' }}>
                 {[
-                  { icon: <FiUsers />, value: '50+', label: 'Happy Clients' },
-                  { icon: <FiAward />, value: '100+', label: 'Projects Done' },
-                  { icon: <FiTrendingUp />, value: '98%', label: 'Retention' },
+                  { icon: <FiUsers />, value: '50+', label: 'Happy Clients', color: 'var(--primary)' },
+                  { icon: <FiAward />, value: '100+', label: 'Projects Done', color: 'var(--secondary)' },
+                  { icon: <FiTrendingUp />, value: '98%', label: 'Retention', color: 'var(--accent)' },
                 ].map((s, i) => (
-                  <div key={i} className="hover-lift" style={{ textAlign: 'center', padding: '14px 8px', background: 'var(--card-bg)', borderRadius: '14px', border: '1px solid var(--card-border)' }}>
-                    <div style={{ color: '#22c55e', marginBottom: '4px', display: 'flex', justifyContent: 'center', fontSize: '1.1rem' }}>{s.icon}</div>
+                  <div key={i} className="hover-lift" style={{ textAlign: 'center', padding: '16px 8px', background: 'var(--card-bg)', borderRadius: '14px', border: '1px solid var(--card-border)', boxShadow: 'var(--card-shadow)' }}>
+                    <div style={{ color: s.color, marginBottom: '6px', display: 'flex', justifyContent: 'center', fontSize: '1.2rem' }}>{s.icon}</div>
                     <div style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.6rem)', fontWeight: 800, fontFamily: 'Red Hat Display', color: 'var(--text-primary)' }}>{s.value}</div>
                     <div style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)' }}>{s.label}</div>
                   </div>
@@ -128,7 +134,7 @@ export default function Home() {
                     <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{s.icon}</div>
                     <h3 style={{ fontSize: '1.1rem', marginBottom: '8px', fontFamily: 'Red Hat Display' }}>{s.title}</h3>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '12px', lineHeight: 1.6 }}>{s.shortDescription}</p>
-                    <span style={{ color: '#22c55e', fontSize: '0.8rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ color: 'var(--primary)', fontSize: '0.8rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                       Learn more <FiArrowRight size={12} />
                     </span>
                   </div>
@@ -155,21 +161,21 @@ export default function Home() {
               </p>
               {features.map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(224,192,96,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <FiCheck size={12} style={{ color: '#22c55e' }} />
+                  <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'var(--primary-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <FiCheck size={12} style={{ color: 'var(--primary)' }} />
                   </div>
                   <span style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.85rem, 2vw, 0.95rem)' }}>{item}</span>
                 </div>
               ))}
             </div>
-            <div style={{ background: 'var(--card-bg)', borderRadius: '20px', padding: 'clamp(24px, 4vw, 36px)', border: '1px solid var(--card-border)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.04)' }}>
+            <div style={{ background: 'var(--card-bg)', borderRadius: '20px', padding: 'clamp(24px, 4vw, 36px)', border: '1px solid var(--card-border)', boxShadow: 'var(--card-shadow)' }}>
               <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                 <div style={{ fontSize: 'clamp(2.2rem, 5vw, 2.8rem)', fontWeight: 900, fontFamily: 'Red Hat Display', background: 'var(--gradient-text)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>3+</div>
                 <div style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.8rem, 2vw, 0.95rem)' }}>Years of Experience</div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
                 {highlights.map((s, i) => (
-                  <div key={i} style={{ background: 'rgba(224,192,96,0.08)', borderRadius: '12px', padding: 'clamp(10px, 3vw, 16px)', textAlign: 'center' }}>
+                  <div key={i} style={{ background: 'var(--secondary-bg)', borderRadius: '12px', padding: 'clamp(10px, 3vw, 16px)', textAlign: 'center', border: '1px solid var(--secondary-border, rgba(251,191,36,0.15))' }}>
                     <div style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: 800, color: 'var(--text-primary)' }}>{s.value}</div>
                     <div style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.65rem, 1.6vw, 0.75rem)' }}>{s.label}</div>
                   </div>
