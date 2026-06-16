@@ -43,16 +43,12 @@ app.get('/api/health', (req, res) => {
 
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
+  app.use('/avatars', express.static(path.join(__dirname, 'public', 'avatars')));
   app.use(express.static(path.join(__dirname, 'public')));
-  app.use('/avatars', express.static(path.join(__dirname, 'public', 'avatars'), { index: 'index.html' }));
+// Avatar download page - serves the Harmes Telegram DP
   app.get('/avatar', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'avatars', 'index.html'));
-  });
-  app.get('/avatars/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'avatars', 'index.html'));
-  });
-  app.get('/avatar', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'avatar.html'));
+    const filePath = path.join(__dirname, 'public', 'avatar.html');
+    res.sendFile(filePath);
   });
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
