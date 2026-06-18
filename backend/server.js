@@ -30,6 +30,17 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', database: 'sqlite', timestamp: new Date().toISOString() });
 });
 
+// Debug: check admin password hash (remove after fix)
+app.get('/api/debug/admin', (req, res) => {
+  try {
+    const { getOne } = require('./config/db');
+    const user = getOne('SELECT id, email, password FROM users WHERE email = ?', ['admin@solvence.agency']);
+    const bcrypt = require('bcryptjs');
+    const match = user ? bcrypt.compareSync('admin123', user.password) : false;
+    res.json({ exists: !!user, hash: user?.password?.substring(0, 30), match });
+  } catch(e) { res.json({ error: e.message }); }
+});
+
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
   app.use('/avatars', express.static(path.join(__dirname, 'public', 'avatars')));
