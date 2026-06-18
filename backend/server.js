@@ -30,7 +30,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', database: 'sqlite', timestamp: new Date().toISOString() });
 });
 
-// Debug: check admin password hash (remove after fix)
+// Debug: check admin password hash
 app.get('/api/debug/admin', (req, res) => {
   try {
     const { getOne } = require('./config/db');
@@ -38,6 +38,17 @@ app.get('/api/debug/admin', (req, res) => {
     const bcrypt = require('bcryptjs');
     const match = user ? bcrypt.compareSync('admin123', user.password) : false;
     res.json({ exists: !!user, hash: user?.password?.substring(0, 30), match });
+  } catch(e) { res.json({ error: e.message }); }
+});
+
+// Reset admin password (temporary)
+app.post('/api/debug/reset-password', (req, res) => {
+  try {
+    const bcrypt = require('bcryptjs');
+    const { run } = require('./config/db');
+    const newHash = bcrypt.hashSync('admin123', 12);
+    run('UPDATE users SET password = ? WHERE email = ?', [newHash, 'admin@solvence.agency']);
+    res.json({ message: 'Password reset to admin123' });
   } catch(e) { res.json({ error: e.message }); }
 });
 
