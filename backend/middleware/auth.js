@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const { getOne } = require('../config/db');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'solvence_secret_key_2026';
 
@@ -12,8 +12,9 @@ exports.protect = async (req, res, next) => {
     if (!token) return res.status(401).json({ error: 'Not authorized' });
 
     const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = await User.findById(decoded.id).select('-password');
-    if (!req.user) return res.status(401).json({ error: 'User not found' });
+    const user = getOne('SELECT id, name, email, role, avatar, is_active FROM users WHERE id = ?', [decoded.id]);
+    if (!user || !user.is_active) return res.status(401).json({ error: 'User not found' });
+    req.user = user;
     next();
   } catch (err) {
     res.status(401).json({ error: 'Not authorized, token failed' });

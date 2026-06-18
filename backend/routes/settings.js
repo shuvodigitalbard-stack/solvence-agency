@@ -1,32 +1,23 @@
 const express = require('express');
-const Setting = require('../models/Setting');
+const { getOne, run } = require('../config/db');
 const { protect, adminOnly } = require('../middleware/auth');
 const router = express.Router();
 
-router.get('/:group', async (req, res) => {
+router.get('/', (req, res) => {
   try {
-    const settings = await Setting.find({ group: req.params.group });
-    const result = {};
-    settings.forEach(s => { result[s.key] = s.value; });
-    res.json(result);
-  } catch (err) { res.status(500).json({ error: err.message }); }
-});
-
-router.get('/', protect, adminOnly, async (req, res) => {
-  try {
-    const settings = await Setting.find().sort({ group: 1 });
+    const settings = {};
+    const rows = require('../config/db').getAll('SELECT key, value FROM settings');
+    rows.forEach(r => settings[r.key] = r.value);
     res.json(settings);
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
-router.put('/:key', protect, adminOnly, async (req, res) => {
+router.put('/', protect, adminOnly, (req, res) => {
   try {
-    const setting = await Setting.findOneAndUpdate(
-      { key: req.params.key },
-      { value: req.body.value, group: req.body.group || 'general' },
-      { new: true, upsert: true }
-    );
-    res.json(setting);
+    Object.entries(req.body).forEach(([key, value]) => {
+      run('INSERT OR REPLACE INTO settings (key, value, updated_at) VALUES (?, ?, CURRENT_TIMESTAMP)', [key, value]);
+    });
+    res.json({ message: 'Settings updated' });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 

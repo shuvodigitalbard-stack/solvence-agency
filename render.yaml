@@ -8,8 +8,6 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: MONGO_URI
-        value: mongodb+srv://solvencetech:Solvence123456@cluster0.vdzarsz.mongodb.net/?appName=Cluster0
       - key: JWT_SECRET
         value: solvence_super_secret_key_2026_production
     plan: free
