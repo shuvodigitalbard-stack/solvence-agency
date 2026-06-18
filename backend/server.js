@@ -3,19 +3,40 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const { initDB } = require('./config/db');
 
 const app = express();
 
+// Security: Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: { error: 'Too many requests, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10, // stricter limit for auth endpoints
+  message: { error: 'Too many login attempts, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 // Middleware
 app.use(helmet({ contentSecurityPolicy: false }));
-app.use(cors());
+app.use(cors({ origin: process.env.CORS_ORIGIN || '*', credentials: true }));
 app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.json({ limit: '10kb' })); // Limit body size
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(limiter);
+
+// Apply stricter rate limiting to auth routes
+app.use('/api/auth', authLimiter);
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
@@ -28,28 +49,6 @@ app.use('/api/settings', require('./routes/settings'));
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', database: 'sqlite', timestamp: new Date().toISOString() });
-});
-
-// Debug: check admin password hash
-app.get('/api/debug/admin', (req, res) => {
-  try {
-    const { getOne } = require('./config/db');
-    const user = getOne('SELECT id, email, password FROM users WHERE email = ?', ['admin@solvence.agency']);
-    const bcrypt = require('bcryptjs');
-    const match = user ? bcrypt.compareSync('admin123', user.password) : false;
-    res.json({ exists: !!user, hash: user?.password?.substring(0, 30), match });
-  } catch(e) { res.json({ error: e.message }); }
-});
-
-// Reset admin password (temporary)
-app.post('/api/debug/reset-password', (req, res) => {
-  try {
-    const bcrypt = require('bcryptjs');
-    const { run } = require('./config/db');
-    const newHash = bcrypt.hashSync('admin123', 12);
-    run('UPDATE users SET password = ? WHERE email = ?', [newHash, 'admin@solvence.agency']);
-    res.json({ message: 'Password reset to admin123' });
-  } catch(e) { res.json({ error: e.message }); }
 });
 
 // Serve frontend in production
@@ -65,17 +64,17 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// Error handler
+// Error handler - don't leak stack traces in production
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ error: 'Something went wrong!' });
+  res.status(500).json({ error: process.env.NODE_ENV === 'production' ? 'Something went wrong!' : err.message });
 });
 
 const PORT = process.env.PORT || 5000;
 
 initDB().then(() => {
   seed().then(() => {
-    updateFeatures(); // Fix existing data with empty features
+    updateFeatures();
     app.listen(PORT, () => {
       console.log(`🚀 Solvence Agency running on port ${PORT}`);
     });
@@ -98,12 +97,12 @@ async function seed() {
 
   // Services with real features
   const services = [
-    ['Web Development', 'web-development', 'Custom websites and web applications built with modern technologies', 'Full-stack web development using React, Node.js, and more. We build responsive, scalable, and secure web applications tailored to your business needs.', '🌐', '["React & Next.js","Node.js & Express","Database Design","API Development","Responsive UI","Performance Optimization"]', 'fixed', 2500, 'USD', 'web', 1],
-    ['Mobile App Development', 'mobile-app', 'Native and cross-platform mobile applications', 'iOS and Android apps using React Native and Flutter. From concept to App Store deployment.', '📱', '["React Native","Flutter","iOS Development","Android Development","App Store Deployment","Push Notifications"]', 'fixed', 5000, 'USD', 'mobile', 2],
-    ['Digital Marketing', 'digital-marketing', 'SEO, SEM, social media marketing and content strategy', 'Comprehensive digital marketing solutions to grow your brand and reach your target audience.', '📈', '["SEO Optimization","Google Ads","Social Media Marketing","Content Strategy","Email Marketing","Analytics & Reporting"]', 'hourly', 150, 'USD', 'marketing', 3],
-    ['UI/UX Design', 'ui-ux-design', 'Beautiful and intuitive user interface design', 'User-centered design for web and mobile applications that delights users and drives conversions.', '🎨', '["User Research","Wireframing","Prototyping","Visual Design","Usability Testing","Design Systems"]', 'fixed', 1500, 'USD', 'design', 4],
-    ['IT Consulting', 'it-consulting', 'Strategic technology consulting for your business', 'Expert advice on technology stack, architecture, and digital transformation.', '💼', '["Tech Stack Selection","Architecture Review","Cloud Migration","Security Audit","Performance Review","Digital Strategy"]', 'hourly', 200, 'USD', 'consulting', 5],
-    ['E-Commerce Solutions', 'ecommerce', 'Complete e-commerce platform development', 'Online stores with payment integration, inventory management, and analytics.', '🛒', '["Custom Storefront","Payment Gateway","Inventory System","Order Management","Analytics Dashboard","Multi-vendor Support"]', 'fixed', 3500, 'USD', 'web', 6],
+    ['Web Development', 'web-development', 'Custom websites and web applications built with modern technologies', 'Full-stack web development using React, Node.js, and more. We build responsive, scalable, and secure web applications tailored to your business needs.', '🌐', '[\"React & Next.js\",\"Node.js & Express\",\"Database Design\",\"API Development\",\"Responsive UI\",\"Performance Optimization\"]', 'fixed', 2500, 'USD', 'web', 1],
+    ['Mobile App Development', 'mobile-app', 'Native and cross-platform mobile applications', 'iOS and Android apps using React Native and Flutter. From concept to App Store deployment.', '📱', '[\"React Native\",\"Flutter\",\"iOS Development\",\"Android Development\",\"App Store Deployment\",\"Push Notifications\"]', 'fixed', 5000, 'USD', 'mobile', 2],
+    ['Digital Marketing', 'digital-marketing', 'SEO, SEM, social media marketing and content strategy', 'Comprehensive digital marketing solutions to grow your brand and reach your target audience.', '📈', '[\"SEO Optimization\",\"Google Ads\",\"Social Media Marketing\",\"Content Strategy\",\"Email Marketing\",\"Analytics & Reporting\"]', 'hourly', 150, 'USD', 'marketing', 3],
+    ['UI/UX Design', 'ui-ux-design', 'Beautiful and intuitive user interface design', 'User-centered design for web and mobile applications that delights users and drives conversions.', '🎨', '[\"User Research\",\"Wireframing\",\"Prototyping\",\"Visual Design\",\"Usability Testing\",\"Design Systems\"]', 'fixed', 1500, 'USD', 'design', 4],
+    ['IT Consulting', 'it-consulting', 'Strategic technology consulting for your business', 'Expert advice on technology stack, architecture, and digital transformation.', '💼', '[\"Tech Stack Selection\",\"Architecture Review\",\"Cloud Migration\",\"Security Audit\",\"Performance Review\",\"Digital Strategy\"]', 'hourly', 200, 'USD', 'consulting', 5],
+    ['E-Commerce Solutions', 'ecommerce', 'Complete e-commerce platform development', 'Online stores with payment integration, inventory management, and analytics.', '🛒', '[\"Custom Storefront\",\"Payment Gateway\",\"Inventory System\",\"Order Management\",\"Analytics Dashboard\",\"Multi-vendor Support\"]', 'fixed', 3500, 'USD', 'web', 6],
   ];
   services.forEach(s => {
     run('INSERT INTO services (title, slug, short_description, full_description, icon, features, price_type, price_amount, price_currency, category, sort_order) VALUES (?,?,?,?,?,?,?,?,?,?,?)', s);
@@ -132,12 +131,12 @@ async function seed() {
 function updateFeatures() {
   const { getAll, run } = require('./config/db');
   const defaultFeatures = {
-    'web-development': '["React & Next.js","Node.js & Express","Database Design","API Development","Responsive UI","Performance Optimization"]',
-    'mobile-app': '["React Native","Flutter","iOS Development","Android Development","App Store Deployment","Push Notifications"]',
-    'digital-marketing': '["SEO Optimization","Google Ads","Social Media Marketing","Content Strategy","Email Marketing","Analytics & Reporting"]',
-    'ui-ux-design': '["User Research","Wireframing","Prototyping","Visual Design","Usability Testing","Design Systems"]',
-    'it-consulting': '["Tech Stack Selection","Architecture Review","Cloud Migration","Security Audit","Performance Review","Digital Strategy"]',
-    'ecommerce': '["Custom Storefront","Payment Gateway","Inventory System","Order Management","Analytics Dashboard","Multi-vendor Support"]',
+    'web-development': '[\"React & Next.js\",\"Node.js & Express\",\"Database Design\",\"API Development\",\"Responsive UI\",\"Performance Optimization\"]',
+    'mobile-app': '[\"React Native\",\"Flutter\",\"iOS Development\",\"Android Development\",\"App Store Deployment\",\"Push Notifications\"]',
+    'digital-marketing': '[\"SEO Optimization\",\"Google Ads\",\"Social Media Marketing\",\"Content Strategy\",\"Email Marketing\",\"Analytics & Reporting\"]',
+    'ui-ux-design': '[\"User Research\",\"Wireframing\",\"Prototyping\",\"Visual Design\",\"Usability Testing\",\"Design Systems\"]',
+    'it-consulting': '[\"Tech Stack Selection\",\"Architecture Review\",\"Cloud Migration\",\"Security Audit\",\"Performance Review\",\"Digital Strategy\"]',
+    'ecommerce': '[\"Custom Storefront\",\"Payment Gateway\",\"Inventory System\",\"Order Management\",\"Analytics Dashboard\",\"Multi-vendor Support\"]',
   };
   const services = getAll('SELECT id, slug, features FROM services');
   let updated = 0;

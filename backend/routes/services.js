@@ -1,9 +1,15 @@
 const express = require('express');
+const { body, validationResult } = require('express-validator');
 const { getAll, getOne, run } = require('../config/db');
 const { protect, adminOnly } = require('../middleware/auth');
 const router = express.Router();
 
-// Public routes use camelCase aliases + _id for React key compatibility
+const handleValidation = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({ error: errors.array()[0].msg });
+  next();
+};
+
 const pubFields = `id AS _id, id, title, slug, short_description AS shortDescription, full_description AS fullDescription, icon, image, features, price_type AS priceType, price_amount AS priceAmount, price_currency AS priceCurrency, category, is_active AS isActive, sort_order AS sortOrder, created_at AS createdAt, updated_at AS updatedAt`;
 
 router.get('/', (req, res) => {
@@ -36,11 +42,16 @@ router.get('/admin/all', protect, adminOnly, (req, res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
-router.post('/', protect, adminOnly, (req, res) => {
+router.post('/', protect, adminOnly, [
+  body('title').trim().isLength({ min: 2 }).withMessage('Title required'),
+  body('slug').trim().isLength({ min: 2 }).withMessage('Slug required'),
+  body('shortDescription').trim().isLength({ min: 10 }).withMessage('Short description required'),
+  handleValidation
+], (req, res) => {
   try {
     const { title, slug, shortDescription, fullDescription, icon, image, features, priceType, priceAmount, priceCurrency, category, sortOrder } = req.body;
     const r = run('INSERT INTO services (title, slug, short_description, full_description, icon, image, features, price_type, price_amount, price_currency, category, sort_order) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
-      [title, slug, shortDescription || '', fullDescription || '', icon || '🚀', image || '', JSON.stringify(features || []), priceType || 'custom', priceAmount || 0, priceCurrency || 'USD', category || 'other', sortOrder || 0]);
+      [title, slug, shortDescription, fullDescription || '', icon || '🚀', image || '', JSON.stringify(features || []), priceType || 'custom', priceAmount || 0, priceCurrency || 'USD', category || 'other', sortOrder || 0]);
     const service = getOne(`SELECT ${pubFields} FROM services WHERE id = ?`, [r.lastInsertRowid]);
     res.status(201).json(service);
   } catch (err) { res.status(500).json({ error: err.message }); }
