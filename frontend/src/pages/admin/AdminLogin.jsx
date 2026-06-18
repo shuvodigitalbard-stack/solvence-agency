@@ -18,10 +18,14 @@ export default function AdminLogin() {
     setLoading(true);
     try {
       const res = await login({ email, password });
+      console.log('Login response:', res.data);
       loginUser(res.data.token, res.data);
       toast.success('Welcome back!');
       navigate('/admin');
-    } catch (err) { toast.error(err.response?.data?.error || 'Login failed'); }
+    } catch (err) {
+      console.log('Login error:', err.response?.data || err.message);
+      toast.error(err.response?.data?.error || 'Login failed');
+    }
     setLoading(false);
   };
 
