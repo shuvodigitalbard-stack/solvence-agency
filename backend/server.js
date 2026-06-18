@@ -53,6 +53,7 @@ const PORT = process.env.PORT || 5000;
 
 initDB().then(() => {
   seed().then(() => {
+    updateFeatures(); // Fix existing data with empty features
     app.listen(PORT, () => {
       console.log(`🚀 Solvence Agency running on port ${PORT}`);
     });
@@ -73,14 +74,14 @@ async function seed() {
   const adminPass = bcrypt.hashSync('admin123', 12);
   run('INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)', ['Admin', 'admin@solvence.agency', adminPass, 'admin']);
 
-  // Services
+  // Services with real features
   const services = [
-    ['Web Development', 'web-development', 'Custom websites and web applications built with modern technologies', 'Full-stack web development using React, Node.js, and more', '🌐', '[]', 'fixed', 2500, 'USD', 'web', 1],
-    ['Mobile App Development', 'mobile-app', 'Native and cross-platform mobile applications', 'iOS and Android apps using React Native and Flutter', '📱', '[]', 'fixed', 5000, 'USD', 'mobile', 2],
-    ['Digital Marketing', 'digital-marketing', 'SEO, SEM, social media marketing and content strategy', 'Comprehensive digital marketing solutions to grow your brand', '📈', '[]', 'hourly', 150, 'USD', 'marketing', 3],
-    ['UI/UX Design', 'ui-ux-design', 'Beautiful and intuitive user interface design', 'User-centered design for web and mobile applications', '🎨', '[]', 'fixed', 1500, 'USD', 'design', 4],
-    ['IT Consulting', 'it-consulting', 'Strategic technology consulting for your business', 'Expert advice on technology stack, architecture, and digital transformation', '💼', '[]', 'hourly', 200, 'USD', 'consulting', 5],
-    ['E-Commerce Solutions', 'ecommerce', 'Complete e-commerce platform development', 'Online stores with payment integration, inventory management, and analytics', '🛒', '[]', 'fixed', 3500, 'USD', 'web', 6],
+    ['Web Development', 'web-development', 'Custom websites and web applications built with modern technologies', 'Full-stack web development using React, Node.js, and more. We build responsive, scalable, and secure web applications tailored to your business needs.', '🌐', '["React & Next.js","Node.js & Express","Database Design","API Development","Responsive UI","Performance Optimization"]', 'fixed', 2500, 'USD', 'web', 1],
+    ['Mobile App Development', 'mobile-app', 'Native and cross-platform mobile applications', 'iOS and Android apps using React Native and Flutter. From concept to App Store deployment.', '📱', '["React Native","Flutter","iOS Development","Android Development","App Store Deployment","Push Notifications"]', 'fixed', 5000, 'USD', 'mobile', 2],
+    ['Digital Marketing', 'digital-marketing', 'SEO, SEM, social media marketing and content strategy', 'Comprehensive digital marketing solutions to grow your brand and reach your target audience.', '📈', '["SEO Optimization","Google Ads","Social Media Marketing","Content Strategy","Email Marketing","Analytics & Reporting"]', 'hourly', 150, 'USD', 'marketing', 3],
+    ['UI/UX Design', 'ui-ux-design', 'Beautiful and intuitive user interface design', 'User-centered design for web and mobile applications that delights users and drives conversions.', '🎨', '["User Research","Wireframing","Prototyping","Visual Design","Usability Testing","Design Systems"]', 'fixed', 1500, 'USD', 'design', 4],
+    ['IT Consulting', 'it-consulting', 'Strategic technology consulting for your business', 'Expert advice on technology stack, architecture, and digital transformation.', '💼', '["Tech Stack Selection","Architecture Review","Cloud Migration","Security Audit","Performance Review","Digital Strategy"]', 'hourly', 200, 'USD', 'consulting', 5],
+    ['E-Commerce Solutions', 'ecommerce', 'Complete e-commerce platform development', 'Online stores with payment integration, inventory management, and analytics.', '🛒', '["Custom Storefront","Payment Gateway","Inventory System","Order Management","Analytics Dashboard","Multi-vendor Support"]', 'fixed', 3500, 'USD', 'web', 6],
   ];
   services.forEach(s => {
     run('INSERT INTO services (title, slug, short_description, full_description, icon, features, price_type, price_amount, price_currency, category, sort_order) VALUES (?,?,?,?,?,?,?,?,?,?,?)', s);
@@ -88,10 +89,10 @@ async function seed() {
 
   // Team
   const team = [
-    ['Shuvo', 'Founder & CEO', 'Full-stack developer with 5+ years of experience', '', 1],
-    ['Rahim', 'Lead Developer', 'Senior backend engineer specializing in scalable systems', '', 2],
-    ['Fatima', 'UI/UX Designer', 'Creative designer focused on user experience', '', 3],
-    ['Karim', 'Marketing Head', 'Digital marketing expert with proven results', '', 4],
+    ['Shuvo', 'Founder & CEO', 'Full-stack developer with 5+ years of experience building scalable web and mobile applications.', '', 1],
+    ['Rahim', 'Lead Developer', 'Senior backend engineer specializing in Node.js, cloud architecture, and microservices.', '', 2],
+    ['Fatima', 'UI/UX Designer', 'Creative designer focused on user experience and modern design systems for web and mobile.', '', 3],
+    ['Karim', 'Marketing Head', 'Digital marketing expert with proven results in SEO, SEM, and social media campaigns.', '', 4],
   ];
   team.forEach(t => {
     run('INSERT INTO team (name, role, bio, avatar, sort_order) VALUES (?,?,?,?,?)', t);
@@ -103,6 +104,36 @@ async function seed() {
   run('INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)', ['phone', '+880 1234-567890']);
 
   console.log('Seed complete!');
+}
+
+// Fix existing services with empty features
+function updateFeatures() {
+  const { getAll, run } = require('./config/db');
+  const defaultFeatures = {
+    'web-development': '["React & Next.js","Node.js & Express","Database Design","API Development","Responsive UI","Performance Optimization"]',
+    'mobile-app': '["React Native","Flutter","iOS Development","Android Development","App Store Deployment","Push Notifications"]',
+    'digital-marketing': '["SEO Optimization","Google Ads","Social Media Marketing","Content Strategy","Email Marketing","Analytics & Reporting"]',
+    'ui-ux-design': '["User Research","Wireframing","Prototyping","Visual Design","Usability Testing","Design Systems"]',
+    'it-consulting': '["Tech Stack Selection","Architecture Review","Cloud Migration","Security Audit","Performance Review","Digital Strategy"]',
+    'ecommerce': '["Custom Storefront","Payment Gateway","Inventory System","Order Management","Analytics Dashboard","Multi-vendor Support"]',
+  };
+  const services = getAll('SELECT id, slug, features FROM services');
+  let updated = 0;
+  services.forEach(s => {
+    try {
+      const parsed = JSON.parse(s.features);
+      if (!Array.isArray(parsed) || parsed.length === 0) {
+        const newFeatures = defaultFeatures[s.slug] || '[]';
+        run('UPDATE services SET features = ? WHERE id = ?', [newFeatures, s.id]);
+        updated++;
+      }
+    } catch(e) {
+      const newFeatures = defaultFeatures[s.slug] || '[]';
+      run('UPDATE services SET features = ? WHERE id = ?', [newFeatures, s.id]);
+      updated++;
+    }
+  });
+  if (updated > 0) console.log(`Updated features for ${updated} services`);
 }
 
 module.exports = app;
